@@ -18,9 +18,9 @@ type Source = {
   phase: number
 }
 
-const COLS = 9
-const ROWS = 6
-const FIELD_W = 1.8
+const COLS = 6
+const ROWS = 4
+const FIELD_W = 1.7
 const FIELD_H = 1.1
 
 function hash(x: number, y: number) {
@@ -64,13 +64,13 @@ function CubeField() {
       const dx = px - s.base[0]
       const dy = py - s.base[1]
       const dist = Math.sqrt(dx * dx + dy * dy)
-      const influence = Math.max(0, 1 - dist / 0.7)
+      const influence = Math.max(0, 1 - dist / 0.6)
 
       const wobbleX = Math.sin(t * 0.5 + s.phase) * 0.015
       const wobbleY = Math.cos(t * 0.4 + s.phase) * 0.015
 
-      const targetX = s.base[0] + dx * influence * 0.35 + wobbleX
-      const targetY = s.base[1] + dy * influence * 0.35 + wobbleY
+      const targetX = s.base[0] + dx * influence * 0.3 + wobbleX
+      const targetY = s.base[1] + dy * influence * 0.3 + wobbleY
       const targetZ = s.base[2] + influence * 0.25
 
       ref.position.x = MathUtils.lerp(ref.position.x, targetX, 0.1)
@@ -81,20 +81,20 @@ function CubeField() {
   }, -0.5)
 
   return (
-    <MarchingCubes resolution={64} maxPolyCount={20000} enableUvs={false} enableColors>
+    <MarchingCubes resolution={28} maxPolyCount={5000} enableUvs={false} enableColors>
       {sources.map((s, i) => (
         <MarchingCube
           key={i}
           ref={(el) => {
             refs.current[i] = el
           }}
-          strength={0.35}
-          subtract={10}
+          strength={0.22}
+          subtract={16}
           color={s.color}
           position={s.base}
         />
       ))}
-      <meshStandardMaterial vertexColors roughness={0.45} metalness={0.2} />
+      <meshStandardMaterial vertexColors roughness={0.45} metalness={0.2} flatShading />
     </MarchingCubes>
   )
 }
@@ -115,7 +115,7 @@ function FrozenScreen() {
       <MeshTransmissionMaterial
         transmission={1}
         thickness={0.3}
-        roughness={0.3}
+        roughness={0.5}
         ior={1.2}
         chromaticAberration={0.01}
         anisotropy={0.1}
