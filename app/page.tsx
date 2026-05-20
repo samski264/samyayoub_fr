@@ -11,6 +11,7 @@ const SECTIONS: Section[] = [
         label: 'standard +',
         description:
           'Founder of a design + additive manufacturing startup. Shipped product, design, infra. 2023- 2025.',
+        href: '/standard-plus',
       },
       {
         label: 'DDB',
@@ -58,12 +59,12 @@ export default function Home() {
 
       <div className="relative flex flex-col items-center px-6 pb-[760px] pt-[249px]">
         <div className="w-[610px] max-w-full">
-          <h1 className="w-[508px] max-w-full text-[33px] font-light leading-[normal] tracking-[-2.64px] text-[#ff8c00]">
+          <h1 className="w-[508px] max-w-full font-light text-[33px] leading-[normal] tracking-[-2.64px] text-[#ff8c00]">
             Hi, I’m Samy a{' '}
             <span className="font-medium">product engineer.</span>
           </h1>
 
-          <p className="mt-[28px] w-[432px] max-w-full text-[16px] leading-[normal] tracking-[-0.96px] text-justify text-[#afafaf]">
+          <p className="mt-[28px] w-[432px] max-w-full font-normal text-[16px] leading-[normal] tracking-[-0.96px] text-justify text-[#afafaf]">
             I start by the problem and find solution : enjoying designing and
             engineering products user needs.
           </p>
@@ -73,10 +74,10 @@ export default function Home() {
               key={section.title}
               className={idx === 0 ? 'mt-[93px]' : 'mt-[113px]'}
             >
-              <h2 className="text-[39px] font-light leading-[normal] tracking-[-0.78px]">
+              <h2 className="font-light text-[39px] leading-[normal] tracking-[-0.78px] text-black">
                 {section.title}
               </h2>
-              <ul className="mt-[41px] flex flex-col gap-[34px] text-[13px] leading-[normal]">
+              <ul className="mt-[41px] flex flex-col gap-[34px] font-normal text-[13px] leading-[normal]">
                 {section.entries.map((entry) => (
                   <ProjectEntry key={entry.label} {...entry} />
                 ))}

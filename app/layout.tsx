@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
 
-const geist = Geist({
-  variable: "--font-geist",
-  subsets: ["latin"],
+const surt = localFont({
+  variable: "--font-surt",
+  display: "swap",
+  src: "./font/surt-variable-wght-wdth-slnt.ttf",
+  weight: "100 900",
+  style: "normal",
 });
 
 const ibmPlexSerif = localFont({
@@ -43,9 +45,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geist.variable} ${ibmPlexSerif.variable} h-full antialiased`}
+      className={`${surt.variable} ${ibmPlexSerif.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col font-sans">{children}</body>
     </html>
   );
 }

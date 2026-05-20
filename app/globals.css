@@ -5,11 +5,14 @@
   --foreground: #0a0a0a;
 }
 
+@theme {
+  --font-sans: var(--font-surt), system-ui, sans-serif;
+  --font-serif: var(--font-ibm-plex-serif), Georgia, serif;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist), system-ui, sans-serif;
-  --font-serif: var(--font-ibm-plex-serif), Georgia, serif;
 }
 
 html,
