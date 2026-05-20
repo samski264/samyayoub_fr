@@ -1,5 +1,17 @@
 @import "tailwindcss";
 
+@property --rx {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --ry {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 0px;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #0a0a0a;
@@ -17,10 +29,15 @@
 
 html,
 body {
-  background: var(--background);
   color: var(--foreground);
 }
 
 body {
   font-family: var(--font-sans);
+  background-color: var(--background);
+  background-image: url('/background.png');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: cover;
+  background-attachment: fixed;
 }

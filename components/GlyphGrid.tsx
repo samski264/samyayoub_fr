@@ -3,11 +3,41 @@
 import { useEffect, useRef } from 'react'
 import type P5 from 'p5'
 
-export default function GlyphGrid() {
+const GLYPHS = ['◊', '↔', '+', '→']
+const BASE_SIZE = 256
+const MAX_PIXEL_DENSITY = 2
+const DEFAULT_CELL_SIZE = 18
+
+const SPRING_STRENGTH = 0.1
+const DAMPING = 0.7
+const NOISE_SCALE = 0.18
+const TIME_SCALE = 0.02
+
+const MOUSE_RADIUS_FACTOR = 0.16
+const MOUSE_SCALE_BOOST = 0.55
+const MOUSE_OPACITY_BOOST = 90
+const MOUSE_ROTATION_STRENGTH = 0.25
+
+const GLYPH_COUNT = GLYPHS.length
+
+const make2D = (cols: number, rows: number, fill: number) =>
+  Array.from({ length: cols }, () => Array.from({ length: rows }, () => fill))
+
+type GlyphGridProps = {
+  className?: string
+  cellSize?: number
+}
+
+export default function GlyphGrid({
+  className,
+  cellSize = DEFAULT_CELL_SIZE,
+}: GlyphGridProps) {
   const containerRef = useRef<HTMLDivElement | null>(null)
 
   useEffect(() => {
     let p5Instance: P5 | null = null
+    let resizeObserver: ResizeObserver | null = null
+    let resizeFn: (() => void) | null = null
     let cancelled = false
 
     void (async () => {
@@ -26,25 +56,10 @@ export default function GlyphGrid() {
       if (cancelled || !containerRef.current) return
       const P5Ctor = mod.default
 
-      const glyphs = ['◊', '↔', '+', '→']
-      const gridCols = 54
-      const gridRows = 18
-      const aspectRatio = gridCols / gridRows
-      const baseSize = 256
-      const maxPixelDensity = 2
-      const springStrength = 0.1
-      const damping = 0.7
-      const noiseScale = 0.075
-      const timeScale = 0.02
-      const mouseRadiusFactor = 0.16
-      const mouseScaleBoost = 0.55
-      const mouseOpacityBoost = 90
-      const mouseRotationStrength = 0.25
-
       const sketch = (p: P5) => {
-        let glyphBuffers: P5.Graphics[] = []
         let glyphCanvases: HTMLCanvasElement[] = []
-        const glyphCount = glyphs.length
+        let gridCols = 1
+        let gridRows = 1
         let scales: number[][] = []
         let targetScales: number[][] = []
         let scaleVelocities: number[][] = []
@@ -55,27 +70,31 @@ export default function GlyphGrid() {
         let smoothMouseX = 0
         let smoothMouseY = 0
 
-        const make2D = (fill: number) =>
-          Array.from({ length: gridCols }, () =>
-            Array.from({ length: gridRows }, () => fill),
-          )
-
-        const canvasSize = () => {
+        const hostSize = () => {
           const host = containerRef.current
-          if (!host) return { w: 200, h: 600 }
+          if (!host) return { w: 600, h: 200 }
           const w = host.clientWidth
           const h = host.clientHeight
-          if (w / h > aspectRatio) {
-            return { w: h * aspectRatio, h }
-          }
-          return { w, h: w / aspectRatio }
+          return { w: w || 600, h: h || 200 }
+        }
+
+        const rebuildGrid = (w: number, h: number) => {
+          gridCols = Math.max(1, Math.round(w / cellSize))
+          gridRows = Math.max(1, Math.round(h / cellSize))
+          scales = make2D(gridCols, gridRows, 1)
+          targetScales = make2D(gridCols, gridRows, 1)
+          scaleVelocities = make2D(gridCols, gridRows, 0)
+          opacities = make2D(gridCols, gridRows, 255)
+          targetOpacities = make2D(gridCols, gridRows, 255)
+          opacityVelocities = make2D(gridCols, gridRows, 0)
         }
 
         p.setup = () => {
-          const { w, h } = canvasSize()
+          const { w, h } = hostSize()
           p.createCanvas(w, h)
-          const dpr = typeof window !== 'undefined' ? window.devicePixelRatio || 1 : 1
-          p.pixelDensity(Math.min(dpr, maxPixelDensity))
+          const dpr =
+            typeof window !== 'undefined' ? window.devicePixelRatio || 1 : 1
+          p.pixelDensity(Math.min(dpr, MAX_PIXEL_DENSITY))
           p.frameRate(60)
           p.smooth()
 
@@ -83,32 +102,37 @@ export default function GlyphGrid() {
           ctx.imageSmoothingEnabled = true
           ctx.imageSmoothingQuality = 'high'
 
-          scales = make2D(1.0)
-          targetScales = make2D(1.0)
-          scaleVelocities = make2D(0)
-          opacities = make2D(255)
-          targetOpacities = make2D(255)
-          opacityVelocities = make2D(0)
+          rebuildGrid(w, h)
 
-          glyphBuffers = glyphs.map((g) => {
-            const buf = p.createGraphics(baseSize, baseSize)
+          const buffers = GLYPHS.map((g) => {
+            const buf = p.createGraphics(BASE_SIZE, BASE_SIZE)
             buf.clear()
             buf.textFont('Gridular, sans-serif')
             buf.textAlign(p.CENTER, p.CENTER)
-            buf.textSize(baseSize * 0.8)
+            buf.textSize(BASE_SIZE * 0.8)
             buf.fill(255)
             buf.noStroke()
-            buf.text(g, baseSize / 2, baseSize / 2)
+            buf.text(g, BASE_SIZE / 2, BASE_SIZE / 2)
             return buf
           })
-          glyphCanvases = glyphBuffers.map(
+          glyphCanvases = buffers.map(
             (g) => (g as unknown as { canvas: HTMLCanvasElement }).canvas,
           )
-        }
 
-        p.windowResized = () => {
-          const { w, h } = canvasSize()
-          p.resizeCanvas(w, h)
+          resizeFn = () => {
+            const { w: nw, h: nh } = hostSize()
+            if (nw > 0 && nh > 0) {
+              p.resizeCanvas(nw, nh)
+              const c = p.drawingContext as CanvasRenderingContext2D
+              c.imageSmoothingEnabled = true
+              c.imageSmoothingQuality = 'high'
+              const targetCols = Math.max(1, Math.round(nw / cellSize))
+              const targetRows = Math.max(1, Math.round(nh / cellSize))
+              if (targetCols !== gridCols || targetRows !== gridRows) {
+                rebuildGrid(nw, nh)
+              }
+            }
+          }
         }
 
         p.mouseMoved = () => {
@@ -137,13 +161,15 @@ export default function GlyphGrid() {
           const halfCellH = cellHeight * 0.5
           const cellMin = Math.min(cellWidth, cellHeight)
           const baseDraw = cellMin * 0.8
-          const t3 = p.frameCount * timeScale
+          const t3 = p.frameCount * TIME_SCALE
 
           if (mouseSeen) {
             smoothMouseX += (p.mouseX - smoothMouseX) * 0.2
             smoothMouseY += (p.mouseY - smoothMouseY) * 0.2
           }
-          const mouseRadius = Math.min(p.width, p.height) * mouseRadiusFactor
+
+          const mouseRadius =
+            Math.min(p.width, p.height) * MOUSE_RADIUS_FACTOR
           const mouseRadiusInv = 1 / mouseRadius
           const mouseRadiusSq = mouseRadius * mouseRadius
 
@@ -155,12 +181,12 @@ export default function GlyphGrid() {
             const colO = opacities[x]
             const colOT = targetOpacities[x]
             const colOV = opacityVelocities[x]
-            const xNoise = x * noiseScale
+            const xNoise = x * NOISE_SCALE
 
             for (let y = 0; y < gridRows; y++) {
               const yPos = y * cellHeight + halfCellH
 
-              const noiseValue = p.noise(xNoise, y * noiseScale, t3)
+              const noiseValue = p.noise(xNoise, y * NOISE_SCALE, t3)
 
               let mouseInfluence = 0
               let mouseAngle = 0
@@ -175,31 +201,35 @@ export default function GlyphGrid() {
                 }
               }
 
-              const targetScale = 0.3 + noiseValue * 1.5 + mouseInfluence * mouseScaleBoost
+              const targetScale =
+                0.3 + noiseValue * 1.5 + mouseInfluence * MOUSE_SCALE_BOOST
               colT[y] = targetScale
               const scaleDiff = targetScale - col[y]
-              const sv = (colSV[y] + scaleDiff * springStrength) * damping
+              const sv = (colSV[y] + scaleDiff * SPRING_STRENGTH) * DAMPING
               colSV[y] = sv
               const s = col[y] + sv
               col[y] = s
 
-              let targetOpacity = 50 + noiseValue * 205 + mouseInfluence * mouseOpacityBoost
+              let targetOpacity =
+                50 + noiseValue * 205 + mouseInfluence * MOUSE_OPACITY_BOOST
               if (targetOpacity > 255) targetOpacity = 255
               colOT[y] = targetOpacity
               const opacityDiff = targetOpacity - colO[y]
-              const ov = (colOV[y] + opacityDiff * springStrength) * damping
+              const ov =
+                (colOV[y] + opacityDiff * SPRING_STRENGTH) * DAMPING
               colOV[y] = ov
               const o = colO[y] + ov
               colO[y] = o
 
               const drawSize = baseDraw * s
               const half = drawSize * 0.5
-              const glyphIndex = (x + y) % glyphCount
+              const glyphIndex = (x + y) % GLYPH_COUNT
 
               ctx.globalAlpha = o * (1 / 255)
 
               if (mouseInfluence > 0) {
-                const angle = mouseAngle * mouseInfluence * mouseRotationStrength
+                const angle =
+                  mouseAngle * mouseInfluence * MOUSE_ROTATION_STRENGTH
                 const c = Math.cos(angle) * pd
                 const sn = Math.sin(angle) * pd
                 ctx.setTransform(c, sn, -sn, c, xPos * pd, yPos * pd)
@@ -207,7 +237,13 @@ export default function GlyphGrid() {
                 ctx.setTransform(pd, 0, 0, pd, xPos * pd, yPos * pd)
               }
 
-              ctx.drawImage(glyphCanvases[glyphIndex], -half, -half, drawSize, drawSize)
+              ctx.drawImage(
+                glyphCanvases[glyphIndex],
+                -half,
+                -half,
+                drawSize,
+                drawSize,
+              )
             }
           }
 
@@ -217,18 +253,20 @@ export default function GlyphGrid() {
       }
 
       p5Instance = new P5Ctor(sketch, containerRef.current)
+
+      const host = containerRef.current
+      if (host) {
+        resizeObserver = new ResizeObserver(() => resizeFn?.())
+        resizeObserver.observe(host)
+      }
     })()
 
     return () => {
       cancelled = true
+      resizeObserver?.disconnect()
       p5Instance?.remove()
     }
   }, [])
 
-  return (
-    <div
-      ref={containerRef}
-      className="flex h-screen w-screen items-center justify-center bg-black"
-    />
-  )
+  return <div ref={containerRef} className={className} />
 }

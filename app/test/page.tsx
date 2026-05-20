@@ -6,8 +6,8 @@ export const metadata = {
 
 export default function TestPage() {
   return (
-    <main className="h-screen w-screen overflow-hidden bg-black">
-      <GlyphGrid />
+    <main className="flex min-h-screen w-full items-center justify-center bg-black p-6">
+      <GlyphGrid className="block h-[139px] w-[992px] max-w-full" />
     </main>
   )
 }

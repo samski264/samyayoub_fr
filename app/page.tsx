@@ -48,13 +48,7 @@ const SECTIONS: Section[] = [
 
 export default function Home() {
   return (
-    <main
-      className="relative min-h-[2009px] w-full overflow-x-hidden text-black"
-      style={{
-        background:
-          'radial-gradient(ellipse 50% 30% at 50% 70%, #ededed, #e2e2e2 75%)',
-      }}
-    >
+    <main className="relative min-h-[2009px] w-full overflow-x-hidden text-black">
       <Nav />
 
       <div className="relative flex flex-col items-center px-6 pb-[760px] pt-[249px]">

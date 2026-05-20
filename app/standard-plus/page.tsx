@@ -1,19 +1,21 @@
 import Button from '@/components/Button'
+import GlyphGrid from '@/components/GlyphGrid'
 import Nav from '@/components/Nav'
 
 export default function StandardPlus() {
   return (
-    <main
-      className="relative min-h-[2009px] w-full overflow-x-hidden text-black"
-      style={{
-        background:
-          'radial-gradient(ellipse 50% 30% at 50% 70%, #ededed, #e2e2e2 75%)',
-      }}
-    >
+    <main className="relative min-h-[2009px] w-full overflow-x-hidden text-black">
       <Nav />
 
-      <div className="relative flex flex-col items-center px-6 pb-[400px] pt-[225px]">
-        <header className="w-[370px] max-w-full">
+      <div className="relative flex flex-col items-center px-6 pb-[400px] pt-[145px]">
+        <figure
+          aria-hidden
+          className="w-[992px] max-w-full mix-blend-difference"
+        >
+          <GlyphGrid className="block h-[139px] w-full" />
+        </figure>
+
+        <header className="mt-[87px] w-[370px] max-w-full">
           <div className="flex items-center justify-between">
             <h1 className="font-light text-[33px] leading-[normal] tracking-[-2.64px] text-[#ff8c00]">
               standard +
@@ -35,16 +37,7 @@ export default function StandardPlus() {
           </div>
         </header>
 
-        <figure className="mt-[103px] w-[992px] max-w-full">
-          <img
-            src="/standard-plus-pattern.png"
-            alt=""
-            aria-hidden
-            className="block h-[139px] w-full object-cover mix-blend-difference pointer-events-none select-none"
-          />
-        </figure>
-
-        <section className="mt-[76px] w-[593px] max-w-full font-normal text-[16px] leading-[1.3] tracking-[-0.32px] text-justify text-black">
+        <section className="mt-[122px] w-[593px] max-w-full font-normal text-[16px] leading-[1.3] tracking-[-0.32px] text-justify text-black">
           <p>
             standard+ is a platform I designed and engineered end-to-end — a
             system where each home object is generated on-demand by local 3D
