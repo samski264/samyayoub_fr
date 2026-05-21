@@ -21,7 +21,7 @@ function EntryInner({ label, description }: Pick<Project, 'label' | 'description
       <svg
         aria-hidden
         viewBox="0 0 19 11"
-        className="ml-3 h-[11px] w-[19px] shrink-0 self-center text-black opacity-0 transition-opacity duration-150 group-hover:opacity-100"
+        className="ml-3 h-[11px] w-[19px] shrink-0 self-center text-black opacity-0 -translate-x-1 transition-[opacity,translate] duration-150 ease-out group-hover:opacity-100 group-hover:translate-x-0"
         fill="none"
         stroke="currentColor"
         strokeWidth="1"
@@ -42,18 +42,15 @@ function Wrapper({
 }) {
   if (!href) {
     return (
-      <li className="group relative isolate flex cursor-default items-start">
+      <li className="group relative isolate flex h-[51px] items-center">
         {children}
       </li>
     )
   }
 
   return (
-    <li className="group relative isolate">
-      <Link
-        href={href}
-        className="relative flex cursor-pointer items-start"
-      >
+    <li className="group relative isolate h-[51px]">
+      <Link href={href} className="relative flex h-full cursor-pointer items-center">
         {children}
       </Link>
     </li>

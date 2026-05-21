@@ -32,8 +32,8 @@ export default function StandardPlus() {
           </p>
 
           <div className="mt-[34px] flex justify-between">
-            <Button>See in production</Button>
-            <Button>Github</Button>
+            <Button variant="primary">See in production</Button>
+            <Button variant="secondary">Github →</Button>
           </div>
         </header>
 

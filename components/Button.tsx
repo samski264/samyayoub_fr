@@ -2,170 +2,182 @@
 
 import Link from 'next/link'
 import {
-  useRef,
+  useId,
   useState,
   type CSSProperties,
-  type MouseEvent,
   type ReactNode,
 } from 'react'
+
+type ButtonVariant = 'primary' | 'secondary'
 
 type ButtonProps = {
   children: ReactNode
   href?: string
+  variant?: ButtonVariant
   className?: string
 }
 
-const BASE_CLASSES =
-  'group relative inline-flex h-[34px] w-[154px] cursor-pointer items-center justify-center overflow-hidden rounded-[10px] border-[0.5px] border-[#afafaf] bg-gradient-to-r from-[#ececec] to-[#e0e0e0] font-normal text-[12px] leading-none tracking-[-0.6px] text-black'
+const TOKENS = {
+  colors: {
+    gray100: '#ececec',
+    gray200: '#e0e0e0',
+    grayBlue: '#d1d7e2',
+  },
+  textInnerShadow: { blur: 0.3, color: '#000000', offsetX: 0, offsetY: 0 },
+} as const
 
-const ENTER_DELAY_MS = 80
-const TRANSITION_MS = 220
-
-type Point = { x: number; y: number }
-type Phase = 'pop' | 'settled' | 'leaving'
-type State = { origin: Point; phase: Phase } | null
-
-function Inner({
-  children,
-  state,
-}: {
-  children: ReactNode
-  state: State
-}) {
-  const animateOrigin = state !== null && state.phase !== 'pop'
-  const x = state?.origin.x ?? 0
-  const y = state?.origin.y ?? 0
-  const opacity = state && state.phase !== 'leaving' ? 1 : 0
-
-  const style: CSSProperties = {
-    ['--rx' as string]: `${x}px`,
-    ['--ry' as string]: `${y}px`,
-    background:
-      'radial-gradient(circle at var(--rx) var(--ry), #507cc0 0%, #8aa6cf 35%, #cad9dc 65%, rgba(202, 217, 220, 0) 100%)',
-    mixBlendMode: 'multiply',
-    opacity,
-    transition: animateOrigin
-      ? `--rx ${TRANSITION_MS}ms ease-out, --ry ${TRANSITION_MS}ms ease-out, opacity ${TRANSITION_MS}ms ease-out`
-      : `opacity ${TRANSITION_MS}ms ease-out`,
+const VARIANT_CONFIG = {
+  primary: {
+    textClass: 'text-[#6a6a6a]',
+    borderClass: '',
+    textInnerShadowOnHover: true,
+    defaultGradient: `linear-gradient(to right, ${TOKENS.colors.gray100}, ${TOKENS.colors.gray200})`,
+    hoverGradient: `linear-gradient(to right, ${TOKENS.colors.gray100}, ${TOKENS.colors.grayBlue})`,
+  },
+  secondary: {
+    textClass: 'text-black',
+    borderClass: 'shadow-[inset_0_0_0_0.2px_#afafaf]',
+    textInnerShadowOnHover: false,
+    hoverGradient: `linear-gradient(to right, ${TOKENS.colors.gray100}, ${TOKENS.colors.gray200})`,
+    defaultGradient: `linear-gradient(to right, ${TOKENS.colors.gray100}, ${TOKENS.colors.gray200})`,
+  },
+} as const satisfies Record<
+  ButtonVariant,
+  {
+    textClass: string
+    borderClass: string
+    textInnerShadowOnHover: boolean
+    hoverGradient: string
+    defaultGradient: string
   }
+>
+
+const BASE_CLASS =
+  'relative inline-flex h-[34px] w-[154px] cursor-pointer items-center justify-center overflow-hidden rounded-[10px] font-normal text-[12px] leading-none tracking-[-0.6px]'
+
+function TextInnerShadowFilter({ id }: { id: string }) {
+  const { blur, color, offsetX, offsetY } = TOKENS.textInnerShadow
+
+  return (
+    <svg
+      aria-hidden
+      className="pointer-events-none absolute h-0 w-0 overflow-hidden"
+    >
+      <defs>
+        <filter
+          id={id}
+          x="-50%"
+          y="-50%"
+          width="200%"
+          height="200%"
+          colorInterpolationFilters="sRGB"
+        >
+          <feGaussianBlur in="SourceAlpha" stdDeviation={blur} result="blur" />
+          <feOffset in="blur" dx={offsetX} dy={offsetY} result="offsetBlur" />
+          <feComposite
+            in="SourceGraphic"
+            in2="offsetBlur"
+            operator="out"
+            result="inverse"
+          />
+          <feFlood floodColor={color} floodOpacity="1" result="color" />
+          <feComposite in="color" in2="inverse" operator="in" result="shadow" />
+          <feComposite in="SourceGraphic" in2="shadow" operator="over" />
+        </filter>
+      </defs>
+    </svg>
+  )
+}
+
+function ButtonLabel({
+  variant,
+  hovered,
+  children,
+}: {
+  variant: ButtonVariant
+  hovered: boolean
+  children: ReactNode
+}) {
+  const filterId = useId().replace(/:/g, '')
+  const showInnerShadow =
+    VARIANT_CONFIG[variant].textInnerShadowOnHover && hovered
 
   return (
     <>
+      {showInnerShadow ? <TextInnerShadowFilter id={filterId} /> : null}
       <span
-        aria-hidden
-        className="pointer-events-none absolute inset-0"
-        style={style}
-      />
-      <span className="relative">{children}</span>
+        className="relative"
+        style={
+          showInnerShadow ? { filter: `url(#${filterId})` } : undefined
+        }
+      >
+        {children}
+      </span>
     </>
   )
 }
 
-function useHoverEffect() {
-  const [state, setState] = useState<State>(null)
-  const mouseRef = useRef<Point>({ x: 0, y: 0 })
-  const sizeRef = useRef<{ width: number; height: number }>({
-    width: 154,
-    height: 34,
-  })
-  const enterTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
-  const cleanupTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
-  const rafRef = useRef<number | null>(null)
-
-  const trackPointer = (e: MouseEvent<HTMLElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect()
-    sizeRef.current = { width: rect.width, height: rect.height }
-    mouseRef.current = {
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
-    }
-  }
-
-  const clearTimers = () => {
-    if (enterTimerRef.current) {
-      clearTimeout(enterTimerRef.current)
-      enterTimerRef.current = null
-    }
-    if (cleanupTimerRef.current) {
-      clearTimeout(cleanupTimerRef.current)
-      cleanupTimerRef.current = null
-    }
-    if (rafRef.current !== null) {
-      cancelAnimationFrame(rafRef.current)
-      rafRef.current = null
-    }
-  }
-
-  const onMouseEnter = (e: MouseEvent<HTMLElement>) => {
-    clearTimers()
-    trackPointer(e)
-    enterTimerRef.current = setTimeout(() => {
-      setState({ origin: { ...mouseRef.current }, phase: 'pop' })
-      rafRef.current = requestAnimationFrame(() => {
-        rafRef.current = null
-        const center = {
-          x: sizeRef.current.width / 2,
-          y: sizeRef.current.height / 2,
-        }
-        setState((prev) =>
-          prev && prev.phase === 'pop'
-            ? { origin: center, phase: 'settled' }
-            : prev,
-        )
-      })
-    }, ENTER_DELAY_MS)
-  }
-
-  const onMouseMove = (e: MouseEvent<HTMLElement>) => {
-    trackPointer(e)
-  }
-
-  const onMouseLeave = (e: MouseEvent<HTMLElement>) => {
-    clearTimers()
-    trackPointer(e)
-    const exit = { ...mouseRef.current }
-
-    setState((prev) => (prev ? { origin: exit, phase: 'leaving' } : null))
-
-    cleanupTimerRef.current = setTimeout(() => {
-      setState(null)
-    }, TRANSITION_MS)
-  }
-
-  return { state, onMouseEnter, onMouseMove, onMouseLeave }
+type ButtonSurfaceProps = {
+  className: string
+  style: CSSProperties
+  onMouseEnter: () => void
+  onMouseLeave: () => void
+  children: ReactNode
 }
 
-export default function Button({ children, href, className = '' }: ButtonProps) {
-  const classes = `${BASE_CLASSES} ${className}`.trim()
-  const { state, onMouseEnter, onMouseMove, onMouseLeave } = useHoverEffect()
-  const handlers = { onMouseEnter, onMouseMove, onMouseLeave }
-
+function ButtonSurface({
+  href,
+  ...props
+}: ButtonSurfaceProps & { href?: string }) {
   if (!href) {
+    return <button type="button" {...props} />
+  }
+
+  if (/^https?:\/\//.test(href)) {
     return (
-      <button type="button" className={classes} {...handlers}>
-        <Inner state={state}>{children}</Inner>
-      </button>
+      <a href={href} target="_blank" rel="noopener noreferrer" {...props} />
     )
   }
 
-  const isExternal = /^https?:\/\//.test(href)
-  if (isExternal) {
-    return (
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={classes}
-        {...handlers}
-      >
-        <Inner state={state}>{children}</Inner>
-      </a>
-    )
+  return <Link href={href} {...props} />
+}
+
+export default function Button({
+  children,
+  href,
+  variant = 'primary',
+  className = '',
+}: ButtonProps) {
+  const [hovered, setHovered] = useState(false)
+  const { textClass, borderClass, defaultGradient, hoverGradient } =
+    VARIANT_CONFIG[variant]
+  const border = borderClass && hovered ? 'shadow-none' : borderClass
+  const classes = [BASE_CLASS, textClass, border, className].filter(Boolean).join(' ')
+  const style: CSSProperties = {
+    background: defaultGradient,
+    transition: 'box-shadow 220ms ease',
   }
 
   return (
-    <Link href={href} className={classes} {...handlers}>
-      <Inner state={state}>{children}</Inner>
-    </Link>
+    <ButtonSurface
+      href={href}
+      className={classes}
+      style={style}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-0 rounded-[10px]"
+        style={{
+          background: hoverGradient,
+          opacity: hovered ? 1 : 0,
+          transition: 'opacity 220ms ease',
+        }}
+      />
+      <ButtonLabel variant={variant} hovered={hovered}>
+        {children}
+      </ButtonLabel>
+    </ButtonSurface>
   )
 }
