@@ -42,7 +42,7 @@ function Wrapper({
 }) {
   if (!href) {
     return (
-      <li className="group relative isolate flex h-[51px] items-center">
+      <li className="group relative isolate flex h-[51px] cursor-pointer items-center">
         {children}
       </li>
     )
