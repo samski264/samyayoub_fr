@@ -11,7 +11,7 @@ const SECTIONS: Section[] = [
       {
         label: 'standard +',
         description:
-          'Founder of a design + additive manufacturing startup. Shipped product, design, infra. 2023- 2026.',
+          'Founder of a design and additive manufacturing startup. Shipped product, design, infra. 2023- 2026.',
         href: '/standard-plus',
       },
       {
