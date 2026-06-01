@@ -81,7 +81,7 @@ export default function HeaderElement({
 
       {/* ProjectEncart — Figma node 187:2046 */}
       <div
-        className="relative z-10 flex items-start overflow-clip px-px w-full lg:w-[1110px]"
+        className="relative z-10 flex items-start overflow-clip px-[15px] w-full lg:px-px lg:w-[1110px]"
         style={{ paddingTop: encartPaddingTop }}
       >
         <ProjectHeader

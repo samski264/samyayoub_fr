@@ -98,10 +98,9 @@ export default function Nfc() {
         {/* NFC tap demo video — Figma node 207:3109 / 207:3108.
             587×440, right-aligned inside a w-[892px] container to match the
             Figma "items-end" alignment (same pattern as the DDB Arte tile). */}
-        <div className="flex items-center justify-end w-[892px]">
+        <div className="flex w-full items-center justify-center px-[10px] lg:w-[892px] lg:justify-end lg:px-0">
           <video
-            className="rounded-[4px] object-cover flex-none"
-            style={{ width: 587, height: 440 }}
+            className="aspect-[587/440] w-full max-w-[587px] rounded-[4px] object-cover lg:aspect-auto lg:h-[440px] lg:w-[587px]"
             src="/video/nfc_tag_exemple.mp4"
             autoPlay
             loop

@@ -13,7 +13,7 @@ export default function Nav() {
   return (
     <nav
       aria-label="Primary"
-      className="fixed left-1/2 top-[38px] z-50 flex h-[52px] w-[200px] -translate-x-1/2 items-center rounded-[15px] bg-white/65 px-[25px] backdrop-blur-[2px]"
+      className="fixed left-1/2 top-[15px] z-50 flex h-[52px] w-[200px] -translate-x-1/2 items-center rounded-[15px] bg-white/65 px-[25px] backdrop-blur-[2px] md:top-[38px]"
     >
       {ITEMS.map((item) => (
         <Link

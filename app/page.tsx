@@ -99,7 +99,7 @@ export default function Home() {
               </h2>
               <ul className="mt-[41px] flex flex-col gap-[34px] font-normal text-[13px] leading-[normal]">
                 {section.entries.map((entry, i) => (
-                  <ProjectEntry key={`${entry.label}-${i}`} {...entry} />
+                  <ProjectEntry key={`${entry.label}-${i}`} {...entry} />  
                 ))}
               </ul>
             </section>

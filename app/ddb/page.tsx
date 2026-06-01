@@ -107,10 +107,9 @@ export default function Ddb() {
 
       {/* Arte video — Figma node 188:2800 / 142:911.
           587×587, right-aligned inside a w-[892px] container to match Figma's justify-end. */}
-      <div className="flex items-center justify-end w-[892px]">
+      <div className="flex w-full items-center justify-center px-[10px] lg:w-[892px] lg:justify-end lg:px-0">
         <video
-          className="rounded-[4px] object-cover flex-none"
-          style={{ width: 587, height: 587 }}
+          className="aspect-square w-full max-w-[587px] rounded-[4px] object-cover lg:aspect-auto lg:h-[587px] lg:w-[587px]"
           src="/video/arte.mp4"
           autoPlay
           loop

@@ -39,10 +39,9 @@ export default function Vision() {
       <div className="flex flex-col items-center">
 
         {/* First video — right-aligned in 890px column */}
-        <div className="flex items-center justify-end pt-[150px] w-[890px]">
+        <div className="flex w-full items-center justify-center px-[10px] pt-[80px] lg:w-[890px] lg:justify-end lg:px-0 lg:pt-[150px]">
           <video
-            className="rounded-[4px] object-cover"
-            style={{ width: 587, height: 587 }}
+            className="aspect-square w-full max-w-[587px] rounded-[4px] object-cover lg:aspect-auto lg:h-[587px] lg:w-[587px]"
             src="/video/com.Samy_3.mp4"
             autoPlay
             loop

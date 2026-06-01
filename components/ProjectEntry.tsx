@@ -49,7 +49,7 @@ function Wrapper({
 }) {
   if (!href) {
     return (
-      <li className="group relative isolate flex flex-col gap-[20px] cursor-pointer lg:h-[51px] lg:flex-row lg:items-start lg:gap-0">
+      <li className="group relative isolate flex flex-col gap-[5px] cursor-pointer lg:h-[51px] lg:flex-row lg:items-start lg:gap-0">
         {children}
       </li>
     )
@@ -59,7 +59,7 @@ function Wrapper({
     <li className="group relative isolate lg:h-[51px]">
       <Link
         href={href}
-        className="relative flex flex-col gap-[20px] cursor-pointer lg:h-full lg:flex-row lg:items-start lg:gap-0"
+        className="relative flex flex-col gap-[5px] cursor-pointer lg:h-full lg:flex-row lg:items-start lg:gap-0"
       >
         {children}
       </Link>
