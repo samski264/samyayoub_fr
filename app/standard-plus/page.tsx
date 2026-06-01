@@ -44,7 +44,7 @@ export default function StandardPlus() {
         {/* Séparateur horizontal — Figma node 116:127 */}
         <div
           aria-hidden
-          className="border-t border-[#e5e5e5] w-[892px]"
+          className="border-t border-[#e5e5e5] w-full lg:w-[892px]"
         />
 
         {/* Problem / Approach — Figma node 154:1530 */}
@@ -99,8 +99,11 @@ export default function StandardPlus() {
           </p>
         </BodyText>
 
-        {/* Design system showcase — Figma node 144:1131 */}
-        <div className="relative rounded-[25px] border-[0.5px] border-[#c9c9c9] w-[927px] h-[561px] mb-[100px]">
+        {/* Design system showcase — Figma node 144:1131.
+            Desktop-only for now: this is an absolute-positioned 927×561 mockup
+            with no mobile design yet in Figma (node 245:3891 omits it).
+            TODO(mobile): design a stacked mobile version of this showcase. */}
+        <div className="relative hidden rounded-[25px] border-[0.5px] border-[#c9c9c9] w-[927px] h-[561px] mb-[100px] lg:block">
           {/* Left column — UserBloc */}
           <div className="absolute" style={{ left: 69, top: 49 }}>
             <UserBloc />
@@ -126,7 +129,7 @@ export default function StandardPlus() {
         </div>
 
         {/* Infrastructure — Figma node 154:1541 */}
-        <div className="flex items-center pt-[150px] pb-[50px] w-[892px]">
+        <div className="flex items-center w-full px-[10px] pt-[80px] pb-[40px] lg:w-[892px] lg:px-0 lg:pt-[150px] lg:pb-[50px]">
           <p className="w-[187px] shrink-0 font-semibold text-[16px] leading-[1.3] tracking-[-0.32px] text-black">
             Infrastructure
           </p>

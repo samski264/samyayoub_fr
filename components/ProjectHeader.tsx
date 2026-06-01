@@ -79,9 +79,8 @@ export default function ProjectHeader({
         </defs>
       </svg>
       <div
-        className={`relative flex flex-col items-start gap-[23px] overflow-hidden rounded-[14px] bg-[rgba(255,255,255,0.74)] px-[40px] py-[24px] ${className}`}
+        className={`relative flex w-full flex-col items-start gap-[23px] overflow-hidden rounded-[14px] bg-[rgba(255,255,255,0.74)] px-[40px] py-[24px] lg:w-[434px] ${className}`}
         style={{
-          width: 434,
           backdropFilter: 'url(#ph-glass) blur(4px) saturate(1.5)',
           WebkitBackdropFilter: 'blur(8px) saturate(1.5)',
           // Inset only — these are surface reflections from Figma's lightAngle 307°

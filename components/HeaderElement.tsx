@@ -81,7 +81,7 @@ export default function HeaderElement({
 
       {/* ProjectEncart — Figma node 187:2046 */}
       <div
-        className="relative z-10 flex items-start overflow-clip px-px w-[1110px]"
+        className="relative z-10 flex items-start overflow-clip px-px w-full lg:w-[1110px]"
         style={{ paddingTop: encartPaddingTop }}
       >
         <ProjectHeader
@@ -94,17 +94,17 @@ export default function HeaderElement({
         />
       </div>
 
-      {/* IntroText — Figma node 187:2201 */}
+      {/* IntroText — Figma node 187:2201 / 245:4003 (mobile) */}
       {hasIntro && (
-        <div className="relative z-10 flex flex-col gap-[10px] items-start justify-center pb-[40px] pt-[61px] w-[892px]">
-          <div className="flex flex-col gap-[22px] items-start">
+        <div className="relative z-10 flex flex-col gap-[10px] items-start justify-center w-full px-[10px] pb-[40px] pt-[61px] lg:w-[892px] lg:px-0">
+          <div className="flex w-full flex-col gap-[22px] items-start">
             {introText && (
-              <div className="font-normal text-[16px] leading-[1.3] tracking-[-0.32px] text-justify text-black w-[593px]">
+              <div className="w-full font-normal text-[16px] leading-[1.3] tracking-[-0.32px] text-justify text-black lg:w-[593px]">
                 {introText}
               </div>
             )}
             {bullets && bullets.length > 0 && (
-              <ul className="list-disc pl-[24px] font-semibold text-[16px] leading-[1.3] tracking-[-0.32px] text-black marker:text-black w-[593px]">
+              <ul className="w-full list-disc pl-[24px] font-semibold text-[16px] leading-[1.3] tracking-[-0.32px] text-black marker:text-black lg:w-[593px]">
                 {bullets.map((bullet, i) => (
                   // eslint-disable-next-line react/no-array-index-key
                   <li key={i}>{bullet}</li>
@@ -115,7 +115,7 @@ export default function HeaderElement({
 
           {/* Partner logos — Figma node 187:2205 */}
           {logos && logos.length > 0 && (
-            <div className="flex gap-[50px] items-center py-[24px]">
+            <div className="flex w-full flex-wrap gap-[50px] items-center justify-center py-[24px] lg:w-auto lg:justify-start">
               {logos.map((logo) => (
                 <Image
                   key={logo.alt}

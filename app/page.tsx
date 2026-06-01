@@ -31,6 +31,7 @@ const SECTIONS: Section[] = [
       {
         label: 'Server side tracking and metrics',
         description: 'standard + metrics system stack : fully server side 2025',
+        href: '/metrics',
       },
       {
         label: 'NFC physical certification',

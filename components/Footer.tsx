@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react'
 import Link from 'next/link'
 
 /*
@@ -15,8 +16,8 @@ type FooterProps = {
 export default function Footer({ width = 890 }: FooterProps) {
   return (
     <footer
-      className="mx-auto flex flex-col gap-[12px] items-start justify-end pt-[196px] pb-[50px] text-black"
-      style={{ width }}
+      className="mx-auto flex w-full flex-col gap-[19px] items-start justify-end px-[10px] pt-[60px] pb-[40px] text-black lg:w-[var(--footer-w)] lg:gap-[12px] lg:px-0 lg:pt-[196px] lg:pb-[50px]"
+      style={{ '--footer-w': `${width}px` } as CSSProperties}
     >
       <p className="font-light text-[16px] leading-[1.3] tracking-[-0.32px] w-full">
         <span>Let&apos;s </span>
@@ -24,10 +25,10 @@ export default function Footer({ width = 890 }: FooterProps) {
         <span>new !</span>
       </p>
 
-      <div className="flex items-center justify-between w-full text-[10px] leading-[1.3] tracking-[-0.2px] text-[#afafaf] whitespace-nowrap">
+      <div className="flex w-full flex-col gap-[19px] text-[10px] leading-[1.3] tracking-[-0.2px] text-[#afafaf] whitespace-nowrap lg:flex-row lg:items-center lg:justify-between lg:gap-0">
         <span>Samy Ayoub Fawaz</span>
 
-        <div className="flex gap-[49px] items-center">
+        <div className="flex gap-[49px] items-center justify-center lg:justify-start">
           <Link
             href="https://www.linkedin.com/in/samy-ayoub-fawaz/"
             target="_blank"

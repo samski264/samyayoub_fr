@@ -82,18 +82,18 @@ const BRICKS: Brick[] = [
 
 export default function InfrastructureBricks() {
   return (
-    <div className="flex flex-col gap-[72px] items-start w-[801px]">
+    <div className="flex flex-col gap-[48px] items-start w-full px-[10px] lg:gap-[72px] lg:w-[801px] lg:px-0">
       {BRICKS.map((brick, i) => (
-        <div key={i} className="flex gap-[27px] items-start w-[801px]">
+        <div key={i} className="flex w-full flex-col gap-[17px] items-start lg:flex-row lg:gap-[27px] lg:w-[801px]">
           {/* Brick card with gradient background, title, and stack chips.
               Gradient lifted from Figma node fill: vertical, top color → transparent white. */}
           <div
-            className="relative flex flex-col gap-[17px] items-start shrink-0 w-[506px] pl-[20px] pr-[45px] pt-[15px] pb-[14px] rounded-t-[10px] overflow-hidden"
+            className="relative flex w-full flex-col gap-[17px] items-start shrink-0 pl-[20px] pr-[45px] pt-[15px] pb-[14px] rounded-t-[10px] overflow-hidden lg:w-[506px]"
             style={{
               backgroundImage: `linear-gradient(180deg, ${brick.gradientColor} 0%, rgba(255,255,255,0) 100%)`,
             }}
           >
-            <h4 className="relative z-10 w-full font-normal text-[33px] leading-[1.3] tracking-[-0.66px] text-white [word-break:break-word]">
+            <h4 className="relative z-10 w-full font-normal text-[24px] leading-[1.3] tracking-[-0.48px] text-white [word-break:break-word]">
               {brick.title}
             </h4>
             <div className="relative z-10 flex flex-wrap content-start gap-y-[5px] gap-x-[12px] h-[56px] w-full px-px">
@@ -109,7 +109,7 @@ export default function InfrastructureBricks() {
           </div>
 
           {/* Bullets adjacent — aligned to top of row to match Figma 213:3815 */}
-          <ul className="list-disc pl-[24px] text-[16px] font-normal leading-[1.3] tracking-[-0.32px] text-black marker:text-black whitespace-nowrap">
+          <ul className="list-disc pl-[24px] text-[16px] font-normal leading-[1.3] tracking-[-0.32px] text-black marker:text-black lg:whitespace-nowrap">
             {brick.bullets.map((b) => (
               <li key={b}>{b}</li>
             ))}
