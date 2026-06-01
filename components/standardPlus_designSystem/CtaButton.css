@@ -1,0 +1,45 @@
+button.searchCtaButton {
+  width: 270px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 9px;
+  background: radial-gradient(50% 44.82% at 50% 50%, #2a2a2a 0%, #1c1c1c 95%);
+  color: white;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  transform: translateY(0px);
+  transition: transform 0.3s ease;
+}
+
+button.searchCtaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0px 4px 20px 2px rgba(0, 0, 0, 0.2);
+}
+
+button.searchCtaButton:active {
+  transform: scale(95%);
+  transition-duration: 0.2s;
+}
+
+button.searchCtaButton.whiteButton {
+  background: #F1F1F1;
+  color: #000000;
+}
+
+.searchCtaButtonArrow {
+  height: 50px;
+  width: 50px;
+  font-size: 32px;
+  font-family: var(--font-gridular), monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+button.searchCtaButton:hover .searchCtaButtonArrow {
+  transform: translateX(5px);
+}

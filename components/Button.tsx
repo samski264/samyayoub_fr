@@ -28,15 +28,17 @@ const TOKENS = {
 
 const VARIANT_CONFIG = {
   primary: {
-    textClass: 'text-[#6a6a6a]',
+    defaultTextClass: 'text-[#323232]',
+    hoverTextClass: 'text-[#6a6a6a]',
     borderClass: '',
     textInnerShadowOnHover: true,
     defaultGradient: `linear-gradient(to right, ${TOKENS.colors.gray100}, ${TOKENS.colors.gray200})`,
     hoverGradient: `linear-gradient(to right, ${TOKENS.colors.gray100}, ${TOKENS.colors.grayBlue})`,
   },
   secondary: {
-    textClass: 'text-black',
-    borderClass: 'shadow-[inset_0_0_0_0.2px_#afafaf]',
+    defaultTextClass: 'text-[#323232]',
+    hoverTextClass: 'text-[#323232]',
+    borderClass: '',
     textInnerShadowOnHover: false,
     hoverGradient: `linear-gradient(to right, ${TOKENS.colors.gray100}, ${TOKENS.colors.gray200})`,
     defaultGradient: `linear-gradient(to right, ${TOKENS.colors.gray100}, ${TOKENS.colors.gray200})`,
@@ -44,7 +46,8 @@ const VARIANT_CONFIG = {
 } as const satisfies Record<
   ButtonVariant,
   {
-    textClass: string
+    defaultTextClass: string
+    hoverTextClass: string
     borderClass: string
     textInnerShadowOnHover: boolean
     hoverGradient: string
@@ -149,8 +152,9 @@ export default function Button({
   className = '',
 }: ButtonProps) {
   const [hovered, setHovered] = useState(false)
-  const { textClass, borderClass, defaultGradient, hoverGradient } =
+  const { defaultTextClass, hoverTextClass, borderClass, defaultGradient, hoverGradient } =
     VARIANT_CONFIG[variant]
+  const textClass = hovered ? hoverTextClass : defaultTextClass
   const border = borderClass && hovered ? 'shadow-none' : borderClass
   const classes = [BASE_CLASS, textClass, border, className].filter(Boolean).join(' ')
   const style: CSSProperties = {

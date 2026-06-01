@@ -1,0 +1,279 @@
+.paiementFormContainer {
+  display: flex;
+  width: 450px;
+  flex-direction: column;
+}
+
+.paiementForm {
+  position: relative;
+  height: 200px;
+  width: 300px;
+}
+
+.paiementPage {
+  display: flex;
+  justify-content: space-around;
+}
+
+.paiementChoicePage {
+  display: flex;
+
+  justify-content: space-around;
+}
+
+.payImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.errorPaiementForm {
+}
+
+.paiementObjectBloc {
+  width: 30vw;
+  margin-bottom: 20px;
+  border-radius: 18px;
+  background: linear-gradient(108deg, #fff 12.61%, #fff 83.13%);
+  box-shadow: 0px 2px 11.9px 1px rgba(194, 194, 194, 0.25);
+  padding: 30px;
+}
+
+.StripeElement {
+  /* margin-top: 30px; */
+}
+
+.sucessPaiementForm {
+}
+
+.paiementButton {
+  position: relative;
+}
+
+/* .card-element-container {
+  box-sizing: border-box;
+  height: 40px;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: white;
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+
+  position: relative;
+
+  flex-shrink: 0;
+  border-radius: 18px;
+  border: 1px solid #8c8c8c;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(25px);
+  font-family: rand;
+  font-size: 14px;
+  color: #fff;
+  padding-left: 20px;
+  appearance: none;
+  -webkit-appearance: none;
+} */
+
+/* Styles pour le conteneur principal */
+
+/* Styles pour le formulaire */
+.paiementFormContainer form {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Styles pour le bouton */
+
+.paiementFormContainer button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.payButton {
+  width: 100%;
+}
+
+.addressElementContainer {
+  width: 100%;
+  margin-bottom: 20px;
+
+  border-radius: 18px;
+  background: linear-gradient(108deg, #fff 12.61%, #fff 83.13%);
+  box-shadow: 0px 2px 11.9px 1px rgba(194, 194, 194, 0.25);
+
+  padding: 30px;
+}
+
+.paymentMethodsContainer {
+  width: 100%;
+  margin-bottom: 20px;
+
+  border-radius: 14px;
+  background: linear-gradient(108deg, #fff 12.61%, #fff 83.13%);
+  box-shadow: 0px 2px 11.9px 1px rgba(194, 194, 194, 0.25);
+
+  padding: 30px;
+}
+
+/* .addressElementContainer .StripeElement .ElementsApp input[name="name"],
+  .addressElementContainer .StripeElement .ElementsApp input[name="address.line1"],
+  .addressElementContainer .StripeElement .ElementsApp input[name="address.line2"],
+  .addressElementContainer .StripeElement .ElementsApp input[name="address.city"],
+  .addressElementContainer .StripeElement .ElementsApp input[name="address.state"],
+  .addressElementContainer .StripeElement .ElementsApp input[name="address.postal_code"] { */
+
+/* .addressElementContainer .Input {
+  box-sizing: border-box;
+  height: 40px;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: white;
+  box-shadow: 0 1px 3px 0 #e6ebf1;
+  -webkit-transition: box-shadow 150ms ease;
+  transition: box-shadow 150ms ease;
+
+  position: relative;
+
+  flex-shrink: 0;
+  border-radius: 18px;
+  border: 1px solid #8c8c8c;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(25px);
+  font-family: rand;
+  font-size: 14px;
+  color: #fff;
+  padding-left: 20px;
+  appearance: none;
+  -webkit-appearance: none;
+} */
+
+/* .addressElementContainer .StripeElement--focus {
+  box-shadow: 0 1px 3px 0 #cfd7df;
+}
+
+.addressElementContainer .StripeElement--invalid {
+  border-color: #fa755a;
+}
+
+.addressElementContainer .StripeElement--webkit-autofill {
+  background-color: transparent !important;
+}
+
+.addressElementContainer .StripeElement .ElementsApp input {
+  background-color: transparent !important;
+  color: #fff !important;
+}
+
+.addressElementContainer .StripeElement .ElementsApp select {
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  color: #fff !important;
+  border-radius: 18px;
+  border: 1px solid #8c8c8c;
+  height: 49px;
+  padding: 10px 20px;
+} */
+
+.cardElementContainer {
+  font-family: randRegular;
+  font-size: 25px;
+  border-radius: 18px;
+  border: 1px solid #8c8c8c;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(25px);
+  height: 49px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+}
+
+.cardElementContainer .StripeElement {
+  width: 100%;
+}
+
+.paymentFormContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.paymentFormContainer form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.paymentButton {
+  width: 754px;
+  height: 49px;
+  border-radius: 18px;
+  border: 1px solid #8c8c8c;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(25px);
+  font-family: "rand", sans-serif;
+  font-size: 18px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.paymentButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
+.checkoutImage {
+  width: 100%;
+}
+/* .errorMessage {
+    color: #fa755a;
+  }
+  
+  .successMessage {
+    color: #32cd32;
+  } */
+
+@media (max-width: 1025px) {
+  .paiementChoicePage {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column-reverse;
+    gap: 100px;
+  }
+
+.paiementPage{
+
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  gap: 100px;
+}
+
+  .paiementObjectBloc {
+    width: calc(100% - 60px);
+    padding: 30px;
+  }
+
+  .paiementFormContainer {
+    display: flex;
+    width: auto;
+    flex-direction: column;
+  }
+
+  .addressElementContainer {
+width: calc(100% - 60px);
+
+  }
+  .detailPaiement {
+    position: relative;
+    width: 100%;
+  }
+
+  .paymentMethodsContainer {
+     width: auto;
+}
+}

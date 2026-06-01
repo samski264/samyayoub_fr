@@ -12,22 +12,24 @@ function EntryInner({ label, description }: Pick<Project, 'label' | 'description
     <>
       <span
         aria-hidden
-        className="pointer-events-none absolute -top-[6px] -bottom-[8px] -left-[10px] -right-[35px] -z-10 rounded-[9px] bg-[#ededed] opacity-0 transition-opacity duration-150 group-hover:opacity-100"
+        className="pointer-events-none absolute -top-[11px] bottom-[3px] -left-[15px] -right-[18px] -z-10 origin-center scale-97 rounded-[9px] bg-[#ededed] opacity-0 transition-[opacity,transform] duration-150 ease-out group-hover:scale-100 group-hover:opacity-100"
       />
-      <span className="w-[112px] shrink-0 pr-[14px] font-normal text-black">
+      <span className="w-[204px] shrink-0 pr-[52px] font-normal text-black">
         {label}
       </span>
-      <span className="flex-1 font-normal text-[#afafaf]">{description}</span>
+      <span className="flex-1 pr-[49px] font-normal text-[#afafaf] underline decoration-from-font [text-underline-position:from-font] group-hover:no-underline">
+        {description}
+      </span>
       <svg
         aria-hidden
-        viewBox="0 0 19 11"
-        className="ml-3 h-[11px] w-[19px] shrink-0 self-center text-black opacity-0 -translate-x-1 transition-[opacity,translate] duration-150 ease-out group-hover:opacity-100 group-hover:translate-x-0"
+        viewBox="0 0 22 11"
+        className="absolute right-0 top-[14px] h-[11px] w-[22px] text-black opacity-0 transition-opacity duration-150 ease-out group-hover:opacity-100"
         fill="none"
         stroke="currentColor"
         strokeWidth="1"
         strokeLinecap="square"
       >
-        <path d="M0 5.5h18M13.5 1l5 4.5L13.5 10" />
+        <path d="M0 5.5h21M16 1l5 4.5L16 10" />
       </svg>
     </>
   )
@@ -42,7 +44,7 @@ function Wrapper({
 }) {
   if (!href) {
     return (
-      <li className="group relative isolate flex h-[51px] cursor-pointer items-center">
+      <li className="group relative isolate flex h-[51px] cursor-pointer items-start">
         {children}
       </li>
     )
@@ -50,7 +52,7 @@ function Wrapper({
 
   return (
     <li className="group relative isolate h-[51px]">
-      <Link href={href} className="relative flex h-full cursor-pointer items-center">
+      <Link href={href} className="relative flex h-full cursor-pointer items-start">
         {children}
       </Link>
     </li>
