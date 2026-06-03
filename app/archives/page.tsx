@@ -9,14 +9,14 @@ const ENTRIES: Project[] = [
     href: '/archives/webd',
   },
   {
-    label: 'Tour Eiffel',
-    description: 'Interactive — AR app with real-time 3D recognition and filters. 2020',
-    href: '/archives/tour-eiffel',
-  },
-  {
     label: 'Objet Graphique',
     description: 'Generative — Arduino + 3D-printed object exploring physical interfaces. 2020',
     href: '/archives/obg',
+  },
+  {
+    label: "Rapport d'expérience",
+    description: 'Generative — GAN experiment applied to artwork creation. 2019',
+    href: '/archives/rapport',
   },
   {
     label: 'DS automobiles',
@@ -24,19 +24,19 @@ const ENTRIES: Project[] = [
     href: '/archives/ds',
   },
   {
-    label: 'Workshop 3D',
-    description: 'Motion — short 3D film on motorsports. 2019',
-    href: '/archives/projet-fin',
-  },
-  {
     label: 'Posters & argentic photography',
     description: 'Graphic — print and film photography series. 2019',
     href: '/archives/aff',
   },
   {
-    label: "Rapport d'expérience",
-    description: 'Generative — GAN experiment applied to artwork creation. 2018',
-    href: '/archives/rapport',
+    label: 'Tour Eiffel',
+    description: 'Interactive — AR app with real-time 3D recognition and filters. 2018',
+    href: '/archives/tour-eiffel',
+  },
+  {
+    label: 'Workshop 3D',
+    description: 'Motion — short 3D film on motorsports. 2018',
+    href: '/archives/projet-fin',
   },
   {
     label: 'JPO EPSAA',

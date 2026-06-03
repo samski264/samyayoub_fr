@@ -16,30 +16,41 @@ export default function About() {
               <span className="text-black">business challenges.</span>
               <br />
               <br />
-              For three years I ran{' '}
+              For three years{' '}
               <span className="text-black">standard+</span>, a startup I founded
               at the intersection of design and additive manufacturing.
               <br />
               <br />
-              I built the product end-to-end: the Next.js app, the payment flow,
-              the AI search over the catalog, even a cryptographic NFC system to
-              certify physical parts. I raised €40K from BPI France, got
-              incubated at the Sorbonne Center for AI, and onboard designers and
-              managed a team of devs.
+              <span className="text-black">I built the product end-to-end</span>
+              : the Next.js app, the payment flow, the AI search over the
+              catalog, even a cryptographic NFC system to certify physical
+              parts. I raised €40K from BPI France, got incubated at the
+              Sorbonne Center for AI, and onboard designers and mangaged team
+              of dev.
               <br />
               <br />
-              I made all the usual startuper mistakes, and proud to say I will do
-              everything to never do them again.
+              <span className="text-black">
+                I made all the usual startuper mistake
+              </span>
+              , and proud to say I will do everything to never do them again.
               <br />
               <br />
-              I&apos;m looking for a team where I can learn continuously and{' '}
+              I&apos;m looking for a team where I can learn continiusly and{' '}
               <span className="text-black">meet great people</span> and continue
               along the path.
             </p>
 
-            <div className="flex flex-col gap-[10px]">
+            <div className="flex flex-col gap-[22px]">
+              <p className="font-normal text-[16px] leading-normal tracking-[-0.32px] text-[#afafaf]">
+                email me at :{' '}
+                <a
+                  href="mailto:ayoubsamy26@gmail.com"
+                  className="text-black transition-opacity hover:opacity-70"
+                >
+                  ayoubsamy26@gmail.com
+                </a>
+              </p>
               <Button href="/cv.pdf">See my CV</Button>
-              <Button href="mailto:ayoubsamy26@gmail.com">Email me</Button>
             </div>
           </div>
         </div>

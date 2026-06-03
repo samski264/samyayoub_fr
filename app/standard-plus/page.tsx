@@ -92,10 +92,6 @@ export default function StandardPlus() {
             object carries the page — minimalist typography, modular grid,
             neutral surfaces. The same system runs across the web platform, the
             physical packaging, and the printed certificate.{' '}
-            <span className="text-[#afafaf]">
-              (captures écrans à insérer : home, catalog, product page, checkout,
-              certificate view)
-            </span>
           </p>
         </BodyText>
 

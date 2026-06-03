@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/next";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
 const rand = localFont({
@@ -166,6 +167,7 @@ export default function RootLayout({
         />
         {children}
         <Analytics />
+        <GoogleAnalytics gaId={"G-04P4V0L2J1"} />
       </body>
     </html>
   );
