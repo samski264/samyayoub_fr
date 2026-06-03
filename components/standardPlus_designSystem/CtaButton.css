@@ -3,7 +3,8 @@ button.searchCtaButton {
   height: 45px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 6px;
   border-radius: 9px;
   background: radial-gradient(50% 44.82% at 50% 50%, #2a2a2a 0%, #1c1c1c 95%);
   color: white;
@@ -30,8 +31,8 @@ button.searchCtaButton.whiteButton {
 }
 
 .searchCtaButtonArrow {
-  height: 50px;
-  width: 50px;
+  height: 45px;
+  width: 32px;
   font-size: 32px;
   font-family: var(--font-gridular), monospace;
   display: flex;

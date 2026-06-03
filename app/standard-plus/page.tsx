@@ -100,9 +100,23 @@ export default function StandardPlus() {
         </BodyText>
 
         {/* Design system showcase — Figma node 144:1131.
-            Desktop-only for now: this is an absolute-positioned 927×561 mockup
-            with no mobile design yet in Figma (node 245:3891 omits it).
-            TODO(mobile): design a stacked mobile version of this showcase. */}
+            Desktop: absolute-positioned 927×561 mockup.
+            Mobile: stacked column fallback (no dedicated mobile design in Figma). */}
+
+        {/* Mobile / tablet — stacked version */}
+        <div
+          className="flex w-full max-w-[480px] flex-col items-center gap-[20px] rounded-[25px] border-[0.5px] border-[#c9c9c9] px-[20px] py-[30px] mb-[60px] lg:hidden"
+          style={{ fontFamily: 'var(--font-rand), system-ui, sans-serif' }}
+        >
+          <UserBloc />
+          <PaiementBloc />
+          <div className="w-full [&_.homePageToptext]:hidden [&_.homePageCatalogCta]:mt-0 [&_.homePageCatalogCtaBloc]:text-[28px] [&_.homePageCatalogCtaBloc]:tracking-[-1.4px] [&_.homePageCatalogCtaArrow]:text-[20px] [&_.homePageCatalogCta]:gap-[8px] [&_.homePageCatalogCtaImage]:w-full [&_.homePageCatalogCtaImage]:h-[200px]">
+            <Vitrine />
+          </div>
+          <CtaButton />
+        </div>
+
+        {/* Desktop — absolute layout */}
         <div className="relative hidden rounded-[25px] border-[0.5px] border-[#c9c9c9] w-[927px] h-[561px] mb-[100px] lg:block">
           {/* Left column — UserBloc */}
           <div className="absolute" style={{ left: 69, top: 49 }}>

@@ -1,18 +1,16 @@
 import Image from "next/image";
-import Link from "next/link";
 import "./UserBloc.css";
 
 const IMG = "/standardPlus_designSystem/images";
 
 export default function UserBloc({
   userName = "Index Office",
-  profileSrc = `${IMG}/dgn473f.jpg`,
-  bannerSrc = `${IMG}/ds350f.jpg`,
-  href = "/samy",
+  profileSrc = `${IMG}/dgn473f.webp`,
+  bannerSrc = `${IMG}/ads350f.webp`,
   alt = "Index Office",
 }) {
   return (
-    <Link className="userBloc" href={href}>
+    <div className="userBloc">
       <div className="userBlocUserBloc">
         <Image
           className="userBlocImage"
@@ -32,6 +30,6 @@ export default function UserBloc({
         height={1667}
       />
       <div className="userBlocArrowButton">→</div>
-    </Link>
+    </div>
   );
 }

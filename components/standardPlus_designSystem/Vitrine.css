@@ -42,11 +42,12 @@
 }
 
 .homePageCatalogCtaImage {
-  width: 100%;
+  width: 238px;
   height: 238px;
   border-radius: 12px;
-  background-repeat: repeat-x;
-  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 
 @media (max-width: 1025px) {

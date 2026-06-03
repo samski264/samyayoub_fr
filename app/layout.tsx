@@ -1,25 +1,14 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const rand = localFont({
   variable: "--font-rand",
   display: "swap",
   src: [
-    { path: "./font/Rand-Thin.otf", weight: "100", style: "normal" },
-    { path: "./font/Rand-ThinItalic.otf", weight: "100", style: "italic" },
-    { path: "./font/Rand-Light.otf", weight: "300", style: "normal" },
-    { path: "./font/Rand-LightItalic.otf", weight: "300", style: "italic" },
     { path: "./font/Rand-Regular.otf", weight: "400", style: "normal" },
-    { path: "./font/Rand-RegularItalic.otf", weight: "400", style: "italic" },
     { path: "./font/Rand-Medium.otf", weight: "500", style: "normal" },
-    { path: "./font/Rand-MediumItalic.otf", weight: "500", style: "italic" },
-    { path: "./font/Rand-Bold.otf", weight: "700", style: "normal" },
-    { path: "./font/Rand-BoldItalic.otf", weight: "700", style: "italic" },
-    { path: "./font/Rand-Heavy.otf", weight: "800", style: "normal" },
-    { path: "./font/Rand-HeavyItalic.otf", weight: "800", style: "italic" },
-    { path: "./font/Rand-Black.otf", weight: "900", style: "normal" },
-    { path: "./font/Rand-BlackItalic.otf", weight: "900", style: "italic" },
   ],
 });
 
@@ -34,7 +23,7 @@ const gridular = localFont({
 const surt = localFont({
   variable: "--font-surt",
   display: "swap",
-  src: "./font/surt-variable-wght-wdth-slnt.ttf",
+  src: "./font/surt-variable-wght-wdth-slnt.woff2",
   weight: "100 900",
   style: "normal",
 });
@@ -43,19 +32,6 @@ const ibmPlexSerif = localFont({
   variable: "--font-ibm-plex-serif",
   display: "swap",
   src: [
-    { path: "./font/IBMPlexSerif-Thin.ttf", weight: "100", style: "normal" },
-    { path: "./font/IBMPlexSerif-ThinItalic.ttf", weight: "100", style: "italic" },
-    { path: "./font/IBMPlexSerif-ExtraLight.ttf", weight: "200", style: "normal" },
-    { path: "./font/IBMPlexSerif-ExtraLightItalic.ttf", weight: "200", style: "italic" },
-    { path: "./font/IBMPlexSerif-Light.ttf", weight: "300", style: "normal" },
-    { path: "./font/IBMPlexSerif-LightItalic.ttf", weight: "300", style: "italic" },
-    { path: "./font/IBMPlexSerif-Regular.ttf", weight: "400", style: "normal" },
-    { path: "./font/IBMPlexSerif-Italic.ttf", weight: "400", style: "italic" },
-    { path: "./font/IBMPlexSerif-Medium.ttf", weight: "500", style: "normal" },
-    { path: "./font/IBMPlexSerif-MediumItalic.ttf", weight: "500", style: "italic" },
-    { path: "./font/IBMPlexSerif-SemiBold.ttf", weight: "600", style: "normal" },
-    { path: "./font/IBMPlexSerif-SemiBoldItalic.ttf", weight: "600", style: "italic" },
-    { path: "./font/IBMPlexSerif-Bold.ttf", weight: "700", style: "normal" },
     { path: "./font/IBMPlexSerif-BoldItalic.ttf", weight: "700", style: "italic" },
   ],
 });
@@ -64,20 +40,9 @@ const ibmPlexMono = localFont({
   variable: "--font-ibm-plex-mono",
   display: "swap",
   src: [
-    { path: "./font/IBMPlexMono-Thin.ttf", weight: "100", style: "normal" },
-    { path: "./font/IBMPlexMono-ThinItalic.ttf", weight: "100", style: "italic" },
-    { path: "./font/IBMPlexMono-ExtraLight.ttf", weight: "200", style: "normal" },
-    { path: "./font/IBMPlexMono-ExtraLightItalic.ttf", weight: "200", style: "italic" },
-    { path: "./font/IBMPlexMono-Light.ttf", weight: "300", style: "normal" },
-    { path: "./font/IBMPlexMono-LightItalic.ttf", weight: "300", style: "italic" },
     { path: "./font/IBMPlexMono-Regular.ttf", weight: "400", style: "normal" },
-    { path: "./font/IBMPlexMono-Italic.ttf", weight: "400", style: "italic" },
-    { path: "./font/IBMPlexMono-Medium.ttf", weight: "500", style: "normal" },
-    { path: "./font/IBMPlexMono-MediumItalic.ttf", weight: "500", style: "italic" },
     { path: "./font/IBMPlexMono-SemiBold.ttf", weight: "600", style: "normal" },
-    { path: "./font/IBMPlexMono-SemiBoldItalic.ttf", weight: "600", style: "italic" },
     { path: "./font/IBMPlexMono-Bold.ttf", weight: "700", style: "normal" },
-    { path: "./font/IBMPlexMono-BoldItalic.ttf", weight: "700", style: "italic" },
   ],
 });
 
@@ -200,6 +165,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         {children}
+        <Analytics />
       </body>
     </html>
   );

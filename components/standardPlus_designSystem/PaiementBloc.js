@@ -7,7 +7,7 @@ export default function PaiementBloc({
   price = "240.00",
   serie = "8/32",
   printingTime = "2h30",
-  imageSrc = `${IMG}/dgn473f.jpg`,
+  imageSrc = `${IMG}/nkelbdxi_0.webp`,
   imageAlt = "product image",
 }) {
   return (

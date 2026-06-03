@@ -88,7 +88,7 @@ export default function InfrastructureBricks() {
           {/* Brick card with gradient background, title, and stack chips.
               Gradient lifted from Figma node fill: vertical, top color → transparent white. */}
           <div
-            className="relative flex w-full flex-col gap-[17px] items-start shrink-0 pl-[20px] pr-[45px] pt-[15px] pb-[14px] rounded-t-[10px] overflow-hidden lg:w-[506px]"
+            className="relative flex w-full flex-col gap-[17px] items-start shrink-0 pl-[20px] pr-[45px] pt-[15px] pb-[14px] rounded-t-[10px] overflow-hidden lg:w-[351px]"
             style={{
               backgroundImage: `linear-gradient(180deg, ${brick.gradientColor} 0%, rgba(255,255,255,0) 100%)`,
             }}

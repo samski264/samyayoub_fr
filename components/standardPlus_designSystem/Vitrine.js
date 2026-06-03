@@ -1,10 +1,9 @@
 import "./Vitrine.css";
-import Link from "next/link";
 
 const IMG = "/standardPlus_designSystem/images";
 
 const categories = [
-  { label: "Luminaires", href: "/luminaires", img: `${IMG}/gc58vueh_0.webp` },
+  { label: "Luminaires", img: `${IMG}/gc58vueh_0.webp` },
 ];
 
 export default function Vitrine() {
@@ -14,8 +13,8 @@ export default function Vitrine() {
         Découvrez et achetez facilement des objets de designers talentueux.
       </h2>
       <div className="homePageCatalogCta">
-        {categories.map(({ label, href, img }) => (
-          <Link key={label} href={href} className="ctaBloc">
+        {categories.map(({ label, img }) => (
+          <div key={label} className="ctaBloc">
             <h3 className="homePageCatalogCtaBloc">
               <span>{label}</span>
               <span className="homePageCatalogCtaArrow">→</span>
@@ -24,7 +23,7 @@ export default function Vitrine() {
               className="homePageCatalogCtaImage"
               style={{ backgroundImage: `url(${img})` }}
             />
-          </Link>
+          </div>
         ))}
       </div>
     </>

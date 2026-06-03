@@ -41,18 +41,22 @@ export default function GlyphGrid({
     let cancelled = false
 
     void (async () => {
-      try {
-        const face = new FontFace(
-          'Gridular',
-          'url(/font/Gridular-Regular.otf) format("opentype")',
-        )
-        const loaded = await face.load()
-        document.fonts.add(loaded)
-      } catch (err) {
-        console.warn('Gridular font failed to load, falling back', err)
-      }
+      // Kick off the font load and the (heavy) p5 import in parallel so the
+      // canvas is ready after max(font, p5) instead of font + p5.
+      const fontReady = (async () => {
+        try {
+          const face = new FontFace(
+            'Gridular',
+            'url(/font/Gridular-Regular.otf) format("opentype")',
+          )
+          const loaded = await face.load()
+          document.fonts.add(loaded)
+        } catch (err) {
+          console.warn('Gridular font failed to load, falling back', err)
+        }
+      })()
 
-      const mod = await import('p5')
+      const [, mod] = await Promise.all([fontReady, import('p5')])
       if (cancelled || !containerRef.current) return
       const P5Ctor = mod.default
 
@@ -259,6 +263,19 @@ export default function GlyphGrid({
         resizeObserver = new ResizeObserver(() => resizeFn?.())
         resizeObserver.observe(host)
       }
+
+      // The hero canvas is now the top network/main-thread priority no longer:
+      // its heavy assets (the Gridular font + the p5 chunk) have finished
+      // downloading and the sketch is mounted. Broadcast that so deferred,
+      // below-the-fold media (e.g. MarketingVideos) can start fetching without
+      // stealing bandwidth from the canvas during initial load. A rAF lets the
+      // first frame paint before we hand priority over.
+      requestAnimationFrame(() => {
+        if (cancelled) return
+        ;(window as unknown as { __glyphGridReady?: boolean }).__glyphGridReady =
+          true
+        window.dispatchEvent(new Event('glyphgrid:ready'))
+      })
     })()
 
     return () => {

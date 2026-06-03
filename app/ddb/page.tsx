@@ -19,16 +19,39 @@ const PUBLIC_DDB = path.join(process.cwd(), 'public/images/ddb')
 
 type ImageEntry = { src: string; displayWidth: number }
 
+function shuffle<T>(arr: T[]): T[] {
+  const a = [...arr]
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[a[i], a[j]] = [a[j], a[i]]
+  }
+  return a
+}
+
 function listImages(
   subdir: string,
   tileSize: number,
   exclude: string[] = [],
 ): ImageEntry[] {
   const dir = path.join(PUBLIC_DDB, subdir)
-  return fs
+  const all = fs
     .readdirSync(dir)
     .filter((f) => /\.(jpe?g|png|webp)$/i.test(f))
     .filter((f) => !exclude.includes(f))
+
+  // Prefer .webp: when an original (.jpg/.png) has a same-named .webp twin,
+  // drop the heavier original and keep only the webp (≈5× smaller).
+  const webpBases = new Set(
+    all
+      .filter((f) => /\.webp$/i.test(f))
+      .map((f) => f.replace(/\.webp$/i, '')),
+  )
+
+  return all
+    .filter((f) => {
+      if (/\.webp$/i.test(f)) return true
+      return !webpBases.has(f.replace(/\.(jpe?g|png)$/i, ''))
+    })
     .sort()
     .map((f) => {
       const src = `/images/ddb/${subdir}/${encodeURIComponent(f)}`
@@ -46,15 +69,16 @@ function listImages(
 }
 
 export default function Ddb() {
-  const mcdoImages = listImages('mcdo', 353, ['mosaic_all_fit.jpg', 'mcdo.webp'])
-  const thalysImages = listImages('thalys', 212, [
+  const mcdoImages = shuffle(
+    listImages('mcdo', 353, ['mosaic_all_fit.jpg', 'mosaic_all_fit.webp', 'mcdo.webp']),
+  )
+  const thalysAll = listImages('thalys', 212, [
     'mosaic_all_fit.jpg',
     'thalys.webp',
   ])
-  const thalysImagesShuffled = [
-    ...thalysImages.slice(thalysImages.length / 2),
-    ...thalysImages.slice(0, thalysImages.length / 2),
-  ]
+  // Two independent shuffles so the staggered rows never line up.
+  const thalysImages = shuffle(thalysAll)
+  const thalysImagesShuffled = shuffle(thalysAll)
 
   return (
     <main className="relative w-full overflow-x-hidden text-black flex flex-col items-center">
@@ -68,7 +92,7 @@ export default function Ddb() {
           <div
             className="absolute left-0 right-0 top-0 h-full bg-repeat-x pointer-events-none"
             style={{
-              backgroundImage: "url('/images/ddb/header.jpg')",
+              backgroundImage: "url('/images/ddb/header.webp')",
               backgroundSize: 'auto 356px',
               backgroundPosition: 'left top',
             }}
@@ -138,6 +162,7 @@ export default function Ddb() {
           pxPerSecond={80}
           direction="left"
           altPrefix="McDonald's France social creative"
+          shuffleOnMount
         />
       </div>
 

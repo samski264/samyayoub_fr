@@ -70,6 +70,19 @@ export default function HeaderElement({
 
   return (
     <div className="relative w-full flex flex-col items-center overflow-x-hidden">
+      {/* Fetch the canvas glyph font at high priority during HTML parse so the
+          GlyphGrid sketch can draw as soon as p5 finishes loading. Only when
+          the default animated banner is used. React hoists this into <head>. */}
+      {!banner && (
+        <link
+          rel="preload"
+          href="/font/Gridular-Regular.otf"
+          as="font"
+          type="font/otf"
+          crossOrigin="anonymous"
+        />
+      )}
+
       {/* Banner zone — absolute so it doesn't push content down */}
       <div
         aria-hidden
