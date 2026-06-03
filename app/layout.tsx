@@ -61,10 +61,10 @@ const jsonLd = {
       name: "Samy Ayoub Fawaz",
       givenName: "Samy",
       familyName: "Ayoub Fawaz",
-      jobTitle: "Product Engineer",
+      jobTitle: "Product Design Engineer",
       hasOccupation: {
         "@type": "Occupation",
-        name: "Product Engineer",
+        name: "Product Design Engineer",
         occupationLocation: [
           { "@type": "Country", name: "Switzerland" },
           { "@type": "Country", name: "France" },
@@ -76,7 +76,7 @@ const jsonLd = {
       mainEntityOfPage: "https://samyayoub.fr/",
       image: "https://samyayoub.fr/assets/img/moi.webp",
       description:
-        "Product Engineer building end-to-end digital products — design systems, full-stack apps, XR/AR experiences and AI features.",
+        "Product Design Engineer building end-to-end digital products — design systems, full-stack apps, XR/AR experiences and AI features.",
       sameAs: [
         "https://www.linkedin.com/in/ayoubsamy/",
         "https://github.com/samski264",
@@ -118,12 +118,12 @@ const jsonLd = {
       "@type": "WebPage",
       "@id": "https://samyayoub.fr#webpage",
       url: "https://samyayoub.fr/",
-      name: "Samy Ayoub Fawaz — Product Engineer",
+      name: "Samy Ayoub Fawaz — Product Design Engineer",
       isPartOf: { "@id": "https://samyayoub.fr#website" },
       inLanguage: "en-US",
-      headline: "Portfolio of Samy Ayoub Fawaz — Product Engineer",
+      headline: "Portfolio of Samy Ayoub Fawaz — Product Design Engineer",
       description:
-        "Product Engineer building end-to-end digital products: design systems, full-stack apps, XR/AR and AI features.",
+        "Product Design Engineer building end-to-end digital products: design systems, full-stack apps, XR/AR and AI features.",
       primaryImageOfPage: {
         "@type": "ImageObject",
         url: "https://samyayoub.fr/assets/img/std/procede.jpg",

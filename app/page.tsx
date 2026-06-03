@@ -11,7 +11,7 @@ const SECTIONS: Section[] = [
       {
         label: 'standard +',
         description:
-          'Founder of a design and additive manufacturing startup. Shipped product, design, infra. 2023- 2026.',
+          'Founder of a design + additive manufacturing startup. End to end shipped product 2023- 2026.',
         href: '/standard-plus',
       },
       {
@@ -30,7 +30,7 @@ const SECTIONS: Section[] = [
       },
       {
         label: 'Server side tracking and metrics',
-        description: 'standard + metrics system stack : fully server side 2025',
+        description: 'standard + server side metrics system stack 2025',
         href: '/metrics',
       },
       {
@@ -54,16 +54,17 @@ const SECTIONS: Section[] = [
     title: 'Archives',
     entries: [
       {
-        label: 'Archive 1',
-        description: 'Coming soon',
+        label: 'Report on GAN network',
+        description:
+          'Generative adversarial network experiment on artwork 2018',
       },
       {
-        label: 'Archive 2',
-        description: 'Coming soon',
+        label: 'Fondation Louis Vuitton',
+        description: 'Real-time installation, student exibition 2020',
       },
       {
-        label: 'Archive 3',
-        description: 'Coming soon',
+        label: 'Fondation Louis Vuitton',
+        description: 'Real-time installation, student exibition 2020',
       },
     ],
   },
@@ -74,18 +75,18 @@ export default function Home() {
     <main className="relative w-full overflow-x-hidden text-black">
       <Nav />
 
-      <div className="relative flex flex-col items-center px-6 pt-[165px]">
+      <div className="relative flex flex-col items-center px-6 pt-[110px]">
         <div className="w-[693px] max-w-full">
           <h1 className="w-[508px] max-w-full font-light text-[33px] leading-[normal] tracking-[-2.64px] text-[#ff8c00]">
             Hi, I&apos;m Samy a{' '}
-            <span className="font-semibold">design engineer.</span>
+            <span className="font-semibold">product engineer.</span>
           </h1>
 
           <p className="mt-[28px] w-[432px] max-w-full font-normal text-[16px] leading-[normal] tracking-[-0.96px] text-justify text-[#afafaf]">
-            I build functionality all the way long, implementing complex
-            infrastructure and minimalist interface with all the tool needed :{' '}
+            Building functionality all the way through, implementing complex
+            infrastructure and minimalist interface with all the tools needed :{' '}
             <span className="font-semibold text-black">
-              ts, ai, figma, nfc, vr, wrench.
+              ts, js, ai, figma, nfc, vr.
             </span>
           </p>
 

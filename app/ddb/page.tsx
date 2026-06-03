@@ -192,7 +192,7 @@ export default function Ddb() {
           altPrefix="Thalys multilingual campaign"
         />
       </div>
-      <div className="w-full">
+      <div className="mt-5 w-full">
         <Marquee
           id="thalys-row2"
           images={thalysImagesShuffled.map((e) => e.src)}
