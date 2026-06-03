@@ -81,7 +81,7 @@ export default function Home() {
 
           <p className="mt-[10px] w-[459px] max-w-full font-normal text-[16px] leading-[normal] tracking-[-0.96px] text-justify text-[#afafaf]">
             {INTRO.description}{' '}
-            <span className="font-semibold text-black">{INTRO.stack}</span>
+            <span className="font-semibold text-black"><br></br>{INTRO.stack}</span>
           </p>
 
           {SECTIONS.map((section, idx) => (
