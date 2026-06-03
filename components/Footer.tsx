@@ -19,7 +19,7 @@ export default function Footer({ width = 890 }: FooterProps) {
       className="mx-auto flex w-full flex-col gap-[19px] items-start justify-end px-[10px] pt-[60px] pb-[40px] text-black lg:w-[var(--footer-w)] lg:gap-[12px] lg:px-0 lg:pt-[196px] lg:pb-[50px]"
       style={{ '--footer-w': `${width}px` } as CSSProperties}
     >
-      <p className="font-light text-[16px] leading-[1.3] tracking-[-0.32px] w-full">
+      <p className="font-light text-[16px] leading-[1.3] tracking-[-0.32px] w-full lg:text-[24px] lg:tracking-[-0.48px]">
         <span>Let&apos;s </span>
         <span className="font-semibold">do something </span>
         <span>new !</span>
@@ -30,7 +30,7 @@ export default function Footer({ width = 890 }: FooterProps) {
 
         <div className="flex gap-[49px] items-center justify-center lg:justify-start">
           <Link
-            href="https://www.linkedin.com/in/samy-ayoub-fawaz/"
+            href="https://www.linkedin.com/in/ayoubsamy/"
             target="_blank"
             rel="noopener noreferrer"
             className="transition-colors hover:text-black"
@@ -38,7 +38,7 @@ export default function Footer({ width = 890 }: FooterProps) {
             Linkedin
           </Link>
           <Link
-            href="https://github.com/samyayoub"
+            href="https://github.com/samski264"
             target="_blank"
             rel="noopener noreferrer"
             className="transition-colors hover:text-black"

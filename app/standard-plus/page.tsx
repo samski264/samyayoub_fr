@@ -22,7 +22,7 @@ export default function StandardPlus() {
         titleColor="#56748b"
         description="A production platform connecting designers and local workshops through an automated 3D-print pipeline, with cryptographic NFC certification for each piece."
         primaryButton={{ label: 'See in production' }}
-        secondaryButton={{ label: 'See in production →' }}
+        secondaryButton={{ label: 'Github →', href: 'https://github.com/samski264' }}
         introText="standard+ is a platform I designed and engineered end-to-end — a system where each home object is generated on-demand by local 3D printers and certified by a cryptographic NFC chip."
         bullets={[
           '€40K BPI France raised',

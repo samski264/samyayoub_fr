@@ -41,17 +41,83 @@ export default function Flv() {
         }
         badge="2020"
         titleColor="#005290"
-        description="A production platform connecting designers and local workshops through an automated 3D-print pipeline, with cryptographic NFC certification for each piece."
-        introText="standard+ is a platform I designed and engineered end-to-end — a system where each home object is generated on-demand by local 3D printers and certified by a cryptographic NFC chip."
-        bullets={[
-          '€40K BPI France raised',
-          'Incubated at Sorbonne Center for Artificial Intelligence',
-          'Onboarded 10 independent designers and 4 interns',
-        ]}
+        description="FLVX is a real-time mediation installation built for the Fondation Louis Vuitton auditorium, developed during FLV LAB#4. It starts from a premise: imagine the Fondation has disappeared, and the only thing left to rebuild it is the flow of data it once produced — visitor movement, gestures, traces."
+        introText="FLVX is a real-time mediation installation built for the Fondation Louis Vuitton auditorium, developed during FLV LAB#4. It starts from a premise: imagine the Fondation has disappeared, and the only thing left to rebuild it is the flow of data it once produced — visitor movement, gestures, traces."
       />
 
-      {/* ── Trade-offs ────────────────────────────────────────────── */}
+      {/* ── The project ───────────────────────────────────────────── */}
       {/* Figma node 190:2891 */}
+      <BodyText label="The project">
+        <p>
+          A large-scale projection displays a 3D model that evolves through the
+          day as live data comes in from sensors across the auditorium. Visitors
+          don&apos;t watch passively: a Leap Motion reads their hand gestures,
+          letting them navigate and reshape the reconstruction without touching
+          anything. A tablet timeline lets them replay earlier states of the day
+          and leave with their own generated plan of the Fondation.
+        </p>
+      </BodyText>
+
+      {/* flv3 — vue large installation + projection */}
+      <div className="w-full px-[10px] lg:w-[892px] lg:px-0">
+        <div className="relative aspect-[892/502] w-full shrink-0 lg:h-[502px]">
+          <Image
+            src="/images/flv/flv3.webp"
+            alt="Exhibition view — projection and visitor"
+            fill
+            sizes="(min-width: 1024px) 892px, 100vw"
+            className="object-cover"
+          />
+        </div>
+      </div>
+
+      {/* ── What I worked on ──────────────────────────────────────── */}
+      {/* Figma node 190:2894 */}
+      <BodyText label="What I worked on:">
+        <ul className="list-disc pl-[24px] marker:text-black">
+          <li className="mb-[1em]">
+            Real-time system from concept to on-site deployment (TouchDesigner
+            runtime, projection-ready pipeline)
+          </li>
+          <li className="mb-[1em]">
+            Contactless interaction layer — hand gestures via Leap Motion to
+            navigate and manipulate the 3D model
+          </li>
+          <li className="mb-[1em]">
+            Tablet timeline interface to replay the day and export each
+            visitor&apos;s plan
+          </li>
+          <li>
+            Live data ingestion and smoothing driving the generative building
+            structure and floor plans from visitor movement
+          </li>
+        </ul>
+      </BodyText>
+
+      {/* Two-column image row — détails interaction */}
+      <div className="flex flex-col gap-[15px] items-center w-full px-[10px] shrink-0 lg:flex-row lg:w-[892px] lg:px-0">
+        <div className="relative aspect-[437/291] w-full lg:h-[291px] lg:w-[437px]">
+          <Image
+            src="/images/flv/flv2.webp"
+            alt="Tablet UI — Atelier Otto interface"
+            fill
+            sizes="(min-width: 1024px) 437px, 100vw"
+            className="object-cover"
+          />
+        </div>
+        <div className="relative aspect-[437/291] w-full lg:h-[291px] lg:w-[437px]">
+          <Image
+            src="/images/flv/flv1.webp"
+            alt="Visitor interacting with installation podium"
+            fill
+            sizes="(min-width: 1024px) 437px, 100vw"
+            className="object-cover"
+          />
+        </div>
+      </div>
+
+      {/* ── Trade-offs ────────────────────────────────────────────── */}
+      {/* Figma node 190:2897 */}
       <BodyText label="Trade-offs">
         <ul className="list-disc pl-[24px] marker:text-black">
           <li className="mb-[1em]">
@@ -72,99 +138,30 @@ export default function Flv() {
         </ul>
       </BodyText>
 
-      {/* flv3 — vue large installation + projection */}
-      <div className="relative w-[892px] h-[502px] shrink-0">
-        <Image
-          src="/images/flv/flv3.webp"
-          alt="Exhibition view — projection and visitor"
-          fill
-          className="object-cover"
-        />
-      </div>
-
-      {/* ── Provisioning side ─────────────────────────────────────── */}
-      {/* Figma node 190:2894 */}
-      <BodyText label="Provisioning side">
-        <p className="mb-[1em]">
-          Before a chip can sign anything, it has to be keyed. A blank NTAG 424
-          ships with factory default keys — anyone with a reader can rewrite it.
-          So between print and packaging, the operator passes each piece over a
-          provisioning bench: a Raspberry Pi connected to a PN532 NFC reader,
-          running a small Flask API. One POST authenticates with the factory
-          keys, rotates both AES keys, enables SDM mirroring (UID + counter +
-          CMAC), and writes the NDEF URL. For the operator it&apos;s one action.
-          Behind it, a sequence designed so a failure mid-rotation doesn&apos;t
-          brick the chip.
-        </p>
-        <p>
-          One detail that matters: Key 1 is never the same across chips.
-          It&apos;s derived from a master key and the chip&apos;s UID. A
-          compromised piece leaks one key, not the batch — and the server can
-          always re-derive the right one from the UID at verify time, so no
-          per-chip secret is stored anywhere.
-        </p>
-      </BodyText>
-
-      {/* Two-column image row — détails interaction */}
-      <div className="flex gap-[15px] items-center w-[892px] shrink-0">
-        <div className="relative w-[437px] h-[291px]">
-          <Image
-            src="/images/flv/flv2.webp"
-            alt="Tablet UI — Atelier Otto interface"
-            fill
-            className="object-cover"
-          />
-        </div>
-        <div className="relative w-[437px] h-[291px]">
-          <Image
-            src="/images/flv/flv1.webp"
-            alt="Visitor interacting with installation podium"
-            fill
-            className="object-cover"
-          />
-        </div>
-      </div>
-
-      {/* ── On-chain anchoring ────────────────────────────────────── */}
-      {/* Figma node 190:2897 */}
-      <BodyText label="On-chain anchoring">
-        <ul className="list-disc pl-[24px] marker:text-black">
-          <li className="mb-[1em]">
-            On-chip signing instead of a server lookup: the customer&apos;s
-            path doesn&apos;t depend on our infrastructure being up. Cost:
-            locked to NTAG 424 (NXP), no second source.
-          </li>
-          <li className="mb-[1em]">
-            Off-chain signed payload anchored on-chain for ownership, instead
-            of one mint per piece: no gas at production rate, public
-            verifiability still works.
-          </li>
-          <li>
-            Side-channel hardening (LRP) implemented but disabled — ~30%
-            throughput cost on the chip, the threat model doesn&apos;t include
-            lab-grade attackers.
-          </li>
-        </ul>
-      </BodyText>
-
       {/* flv4 — vue large salle expo, visiteuse + projection */}
-      <div className="relative w-[892px] h-[502px] shrink-0">
-        <Image
-          src="/images/flv/flv4.webp"
-          alt="Exhibition hall — visitor watching projection"
-          fill
-          className="object-cover"
-        />
+      <div className="w-full px-[10px] lg:w-[892px] lg:px-0">
+        <div className="relative aspect-[892/502] w-full shrink-0 lg:h-[502px]">
+          <Image
+            src="/images/flv/flv4.webp"
+            alt="Exhibition hall — visitor watching projection"
+            fill
+            sizes="(min-width: 1024px) 892px, 100vw"
+            className="object-cover"
+          />
+        </div>
       </div>
 
       {/* flv6 — TouchDesigner system / back-end */}
-      <div className="relative w-[892px] h-[490px] shrink-0 mt-[15px]">
-        <Image
-          src="/images/flv/flv6.webp"
-          alt="TouchDesigner project — installation system"
-          fill
-          className="object-cover"
-        />
+      <div className="w-full px-[10px] mt-[15px] lg:w-[892px] lg:px-0">
+        <div className="relative aspect-[898/490] w-full shrink-0 lg:h-[490px]">
+          <Image
+            src="/images/flv/flv6.webp"
+            alt="TouchDesigner project — installation system"
+            fill
+            sizes="(min-width: 1024px) 898px, 100vw"
+            className="object-cover"
+          />
+        </div>
       </div>
 
       {/* Footer — Figma node 206:3030 */}

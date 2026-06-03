@@ -111,8 +111,6 @@ export default function Ddb() {
             Concept work alongside copywriters, producers and strategists.
           </>
         }
-        primaryButton={{ label: 'See in production' }}
-        secondaryButton={{ label: 'See in production →' }}
         bullets={[
           'Highlights 3M+ cumulative views on social content',
           'End-to-end ownership on a published Arte piece',
