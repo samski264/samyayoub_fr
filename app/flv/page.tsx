@@ -41,8 +41,8 @@ export default function Flv() {
         }
         badge="2020"
         titleColor="#005290"
-        description="FLVX is a real-time mediation installation built for the Fondation Louis Vuitton auditorium, developed during FLV LAB#4. It starts from a premise: imagine the Fondation has disappeared, and the only thing left to rebuild it is the flow of data it once produced — visitor movement, gestures, traces."
-        introText="FLVX is a real-time mediation installation built for the Fondation Louis Vuitton auditorium, developed during FLV LAB#4. It starts from a premise: imagine the Fondation has disappeared, and the only thing left to rebuild it is the flow of data it once produced — visitor movement, gestures, traces."
+        description="FLVX is a real-time mediation installation built for the Fondation Louis Vuitton auditorium, developed during FLV LAB#4."
+        introText="It starts from a premise: imagine the Fondation has disappeared, and the only thing left to rebuild it is the flow of data it once produced visitor movement, gestures, traces."
       />
 
       {/* ── The project ───────────────────────────────────────────── */}
@@ -115,28 +115,6 @@ export default function Flv() {
           />
         </div>
       </div>
-
-      {/* ── Trade-offs ────────────────────────────────────────────── */}
-      {/* Figma node 190:2897 */}
-      <BodyText label="Trade-offs">
-        <ul className="list-disc pl-[24px] marker:text-black">
-          <li className="mb-[1em]">
-            On-chip signing instead of a server lookup: the customer&apos;s
-            path doesn&apos;t depend on our infrastructure being up. Cost:
-            locked to NTAG 424 (NXP), no second source.
-          </li>
-          <li className="mb-[1em]">
-            Off-chain signed payload anchored on-chain for ownership, instead
-            of one mint per piece: no gas at production rate, public
-            verifiability still works.
-          </li>
-          <li>
-            Side-channel hardening (LRP) implemented but disabled — ~30%
-            throughput cost on the chip, the threat model doesn&apos;t include
-            lab-grade attackers.
-          </li>
-        </ul>
-      </BodyText>
 
       {/* flv4 — vue large salle expo, visiteuse + projection */}
       <div className="w-full px-[10px] lg:w-[892px] lg:px-0">

@@ -60,7 +60,7 @@ const SECTIONS: Section[] = [
       },
       {
         label: 'Vision +',
-        description: 'AR concept exploring attention as currency. 2021.',
+        description: 'VR concept exploring attention as currency. 2021.',
         href: '/vision',
       },
     ],
