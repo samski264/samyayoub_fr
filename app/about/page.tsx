@@ -16,7 +16,7 @@ export default function About() {
               <span className="text-black">business challenges.</span>
               <br />
               <br />
-              For three years{' '}
+              For three years at{' '}
               <span className="text-black">standard+</span>, a startup I founded
               at the intersection of design and additive manufacturing.
               <br />
@@ -32,7 +32,7 @@ export default function About() {
               <span className="text-black">
                 I made all the usual startuper mistake
               </span>
-              , and proud to say I will do everything to never do them again.
+              , and do everything to never do them again.
               <br />
               <br />
               I&apos;m looking for a team where I can learn continiusly and{' '}

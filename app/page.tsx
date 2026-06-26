@@ -52,17 +52,18 @@ const SECTIONS: Section[] = [
         label: 'Server side tracking and metrics',
         description: 'standard + server side metrics system stack 2025',
         href: '/metrics',
+      },      
+      {
+        label: 'Vision +',
+        description: 'VR concept exploring attention as currency. 2021.',
+        href: '/vision',
       },
       {
         label: 'Fondation Louis Vuitton',
         description: 'Real-time installation, student exibition 2020',
         href: '/flv',
       },
-      {
-        label: 'Vision +',
-        description: 'VR concept exploring attention as currency. 2021.',
-        href: '/vision',
-      },
+
     ],
   },
 ]
