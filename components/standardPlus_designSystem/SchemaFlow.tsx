@@ -4,7 +4,7 @@ type SchemaFlowProps = {
   className?: string
 }
 
-const SCHEMA_FLOW_SRC = '/svg/diagram2.svg'
+const SCHEMA_FLOW_SRC = '/svg/diagram3.svg'
 
 export default function SchemaFlow({ className }: SchemaFlowProps) {
   return (
@@ -12,9 +12,9 @@ export default function SchemaFlow({ className }: SchemaFlowProps) {
       <Image
         src={SCHEMA_FLOW_SRC}
         alt="Flow diagram: Designer uploads CAD to standard+, standard+ delivers Object to Consumer, Consumer pays standard+, standard+ sends Royalties to Designer."
-        width={1232}
-        height={386}
-        className="block h-auto w-full select-none"
+        width={804}
+        height={402}
+        className="mx-auto block h-auto w-full max-w-[1080px] select-none"
         draggable={false}
         unoptimized
       />

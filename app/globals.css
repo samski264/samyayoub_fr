@@ -51,3 +51,10 @@ body {
   background-color: transparent;
 }
 
+/* SchemaFlow: dashes drifting along the arrows (period = dasharray sum) */
+@keyframes schema-flow-dash {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+

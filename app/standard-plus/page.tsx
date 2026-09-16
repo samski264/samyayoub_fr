@@ -1,5 +1,6 @@
 import BodyText from '@/components/BodyText'
 import Footer from '@/components/Footer'
+import GlyphGridVideo from '@/components/GlyphGridVideo'
 import HeaderElement from '@/components/HeaderElement'
 import Nav from '@/components/Nav'
 import CtaButton from '@/components/standardPlus_designSystem/CtaButton'
@@ -20,6 +21,8 @@ export default function StandardPlus() {
         title="standard +"
         badge="2023 - 2026"
         titleColor="#56748b"
+        banner={<GlyphGridVideo className="block h-full w-full" />}
+        bannerHeight={420}
         description="A production platform connecting designers and local workshops through an automated 3D-print pipeline, with cryptographic NFC certification for each piece."
         primaryButton={{ label: 'See in production', href: 'https://standardplus.app' }}
         secondaryButton={{ label: 'Github →', href: 'https://github.com/samski264' }}

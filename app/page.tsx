@@ -3,6 +3,9 @@ import Footer from '@/components/Footer'
 import Nav from '@/components/Nav'
 import ProjectEntry, { type Project } from '@/components/ProjectEntry'
 
+
+
+
 type Intro = {
   titleStart: string
   titleStrong: string
@@ -20,7 +23,7 @@ const INTRO: Intro = {
   titleStrong: 'product engineer.',
   description:
     'Building functionality all the way through, implementing complex infrastructure and minimalist interface with all the tools needed :',
-  stack: 'ts, js, ai, figma, nfc, vr.',
+  stack: 'ts, figma, ai',
 }
 
 const SECTIONS: Section[] = [
@@ -44,15 +47,16 @@ const SECTIONS: Section[] = [
     title: 'Lab',
     entries: [
       {
-        label: 'NFC physical certification',
-        description: 'standard + core certification system 2024',
-        href: '/nfc',
-      },
-      {
         label: 'Server side tracking and metrics',
         description: 'standard + server side metrics system stack 2025',
         href: '/metrics',
       },      
+      {
+        label: 'NFC physical certification',
+        description: 'standard + core certification system 2024',
+        href: '/nfc',
+      },
+
       {
         label: 'Vision +',
         description: 'VR concept exploring attention as currency. 2021.',
