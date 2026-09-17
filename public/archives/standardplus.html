@@ -1,0 +1,689 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>standard+ — platform for design, 3D production, and blockchain certification | Samy AYOUB FAWAZ</title>
+    <meta name="description" content="standard+ is a local production platform connecting designers and workshops through automated 3D printing. It combines design, technology, marketing, and blockchain to certify every object via an encrypted NFC chip." />
+    <meta name="keywords" content="design, 3D printing, blockchain, NFC, digital marketing, fintech, local manufacturing, Next.js, Node.js" />
+    <meta name="author" content="Samy Ayoub" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://samyayoub.fr/standardplus" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:url" content="https://samyayoub.fr/standardplus" />
+    <meta property="og:site_name" content="Portfolio — Samy Ayoub" />
+    <meta property="og:title" content="standard+ — platform for design, 3D production, and blockchain certification" />
+    <meta property="og:description" content="standard+ connects designers and local workshops through automated 3D printing and blockchain certification." />
+    <meta property="og:image" content="https://samyayoub.fr//assets/img/std/procede.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="standard+ — platform for design, 3D production, and blockchain certification" />
+    <meta name="twitter:description" content="standard+ connects designers and local workshops through automated 3D printing and blockchain certification." />
+    <meta name="twitter:image" content="https://samyayoub.fr//assets/img/std/procede.jpg" />
+
+    <link rel="icon" type="image/svg+xml" href="https://samyayoub.fr//assets/img/urku-ico.svg" />
+    <link rel="apple-touch-icon" href="https://samyayoub.fr//assets/img/urku-ico.svg" />
+
+    <link rel="alternate" href="https://samyayoub.fr/standardplus" hreflang="en" />
+    <title>Samy AYOUB FAWAZ</title>
+    <link rel="icon" type="image/svg+xml" href="/assets/img/urku-ico.svg" />
+    <link rel="stylesheet" href="/assets/css/aurora-pack.css" />
+    <link rel="stylesheet" href="/assets/css/aurora-theme-base.css" />
+    <link rel="stylesheet" href="/assets/css/urku.css" />
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/animation.gsap.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-120784575-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-120784575-1");
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": "https://samyayoub.fr#person",
+            "name": "Samy Ayoub Fawaz",
+            "givenName": "Samy",
+            "familyName": "Ayoub Fawaz",
+            "jobTitle": "Product Engineer",
+            "url": "https://samyayoub.fr/",
+            "mainEntityOfPage": "https://samyayoub.fr/",
+            "image": "https://samyayoub.fr//assets/img/moi.webp",
+            "description": "Design Engineer blending product engineering and design to build end-to-end experiences (web, automation, fabrication).",
+            "sameAs": ["https://www.linkedin.com/in/ayoubsamy/", "https://github.com/samski264", "https://www.instagram.com/samski.264/"],
+            "knowsLanguage": ["fr", "en"],
+            "worksFor": {
+              "@type": "Organization",
+              "name": "standard+",
+              "url": "https://standardplus.app"
+            },
+            "alumniOf": {
+              "@type": "CollegeOrUniversity",
+              "name": "ENSCI — Les Ateliers"
+            },
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "contactType": "portfolio inquiries",
+              "availableLanguage": ["en", "fr"],
+              "url": "https://samyayoub.fr/contact"
+            },
+            "knowsAbout": ["Design engineering", "Product engineering", "Creative technology", "UX/UI design", "Next.js", "Node.js", "Python", "3D printing", "Digital fabrication"]
+          },
+
+
+
+            
+
+          {
+            "@type": "WebSite",
+            "@id": "https://samyayoub.fr#website",
+            "url": "https://samyayoub.fr/",
+            "name": "Portfolio — Samy Ayoub Fawaz",
+            "inLanguage": "en-US",
+            "publisher": { "@id": "https://samyayoub.fr#person" }
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://samyayoub.fr/standardplus#webpage",
+            "url": "https://samyayoub.fr/standardplus",
+            "name": "standard+ — platform for design, technology, and local production",
+            "headline": "standard+ — platform for design, 3D production, and blockchain certification",
+            "description": "standard+ is a local production platform connecting designers and workshops through automated 3D-printing, with blockchain-based certification via encrypted NFC chips.",
+            "isPartOf": { "@id": "https://samyayoub.fr#website" },
+            "inLanguage": "en-US",
+            "author": { "@id": "https://samyayoub.fr#person" },
+            "about": { "@id": "https://samyayoub.fr/standardplus#work" },
+            "mainEntity": { "@id": "https://samyayoub.fr/standardplus#work" },
+            "primaryImageOfPage": {
+              "@type": "ImageObject",
+              "url": "https://samyayoub.fr//assets/img/std/procede.jpg",
+              "width": 1200,
+              "height": 630
+            },
+            "datePublished": "2025-10-05",
+            "dateModified": "2025-10-07",
+            "breadcrumb": { "@id": "https://samyayoub.fr/standardplus#breadcrumb" }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://samyayoub.fr/standardplus#breadcrumb",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://samyayoub.fr/" },
+              { "@type": "ListItem", "position": 2, "name": "standard+", "item": "https://samyayoub.fr/standardplus" }
+            ]
+          },
+          {
+            "@type": ["CreativeWork", "SoftwareSourceCode"],
+            "@id": "https://samyayoub.fr/standardplus#work",
+            "url": "https://samyayoub.fr/standardplus",
+            "name": "standard+",
+            "alternateName": "standard plus",
+            "headline": "standard+ — platform for design, 3D production, and blockchain certification",
+            "creator": { "@id": "https://samyayoub.fr#person" },
+            "author": { "@id": "https://samyayoub.fr#person" },
+            "isPartOf": { "@id": "https://samyayoub.fr/standardplus#webpage" },
+            "dateCreated": "2023-01-01",
+            "datePublished": "2025-10-05",
+            "inLanguage": "en-US",
+            "description": "A local production platform connecting designers and workshops via automated 3D-printing pipelines. Combines code, design, and blockchain integration to certify each object with an encrypted NFC chip.",
+            "keywords": ["design", "3D printing", "blockchain", "NFC", "digital marketing", "fintech", "local manufacturing", "platform"],
+            "programmingLanguage": ["JavaScript", "Node.js", "Next.js", "Solidity"],
+            "runtimePlatform": "Web",
+            "codeRepository": "https://github.com/samski264/standard_next",
+            "license": "https://opensource.org/licenses/MIT",
+            "image": ["https://samyayoub.fr//assets/img/std/procede.jpg", "https://samyayoub.fr//assets/standardplus/design.png"],
+            "about": [
+              {
+                "@type": "Thing",
+                "name": "Blockchain and traceability",
+                "description": "Smart contracts to certify provenance and production."
+              },
+              {
+                "@type": "Thing",
+                "name": "Production automation",
+                "description": "API-connected local 3D printers; orchestration of G-code flow."
+              },
+              {
+                "@type": "Thing",
+                "name": "Marketing and acquisition",
+                "description": "Paid campaigns and organic growth targeting design & sustainability."
+              },
+              {
+                "@type": "Thing",
+                "name": "Finance and strategy",
+                "description": "Early-stage funding, cost structure, and per-order unit economics."
+              }
+            ]
+          }
+        ]
+      }
+    </script>
+  </head>
+  <style>
+    .text {
+      font-size: 1rem;
+    }
+
+    /* .speaking {
+      font-size: 1.5rem;
+      
+    }
+
+    .speaking-small {
+      font-size: 1.5rem;
+      
+    } */
+
+    .projectBorder {
+      background-color: #f8f8f8;
+      padding: 50px;
+      margin: -50px;
+      border-radius: 32px;
+    }
+
+    .projectDetails {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition:
+        max-height 0.6s ease,
+        opacity 0.4s ease;
+    }
+
+    .projectDetails.is-open {
+      max-height: 2000px; /* assez grand pour contenir ton bloc */
+      opacity: 1;
+    }
+
+    .toggleLink {
+      cursor: pointer;
+      color: inherit;
+      text-decoration: underline;
+
+      margin-left: 12px;
+    }
+
+    .toggleLink:hover {
+      opacity: 0.7;
+    }
+
+    .actionRow {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .videoGallery {
+      display: flex;
+    }
+    /* 
+    .marketingVideo {
+      margin: 2.666%;
+      width: 14%;
+      pointer-events: none;
+      z-index: 99;
+      border-radius: 12px;
+    } */
+    .videoGallery {
+      display: flex;
+      justify-content: center; /* centre les vidéos horizontalement */
+      align-items: center; /* aligne verticalement */
+      flex-wrap: nowrap; /* empêche le retour à la ligne */
+      overflow-x: hidden; /* cache le débordement horizontal */
+      gap: 1.5vw; /* espace fluide entre les vidéos */
+      width: 100%;
+      padding: 2vw 0;
+    }
+
+    .marketingVideoContainer {
+      position: relative;
+      flex: 1 1 auto; /* pe rmet de s’adapter à la taille de l’écran */
+      max-width: 16%; /* limite la taille max par vidéo */
+      aspect-ratio: 9/16; /* garde un format vertical (ou 16/9 si horizontal) */
+      border-radius: 12px;
+      pointer-events: none;
+      object-fit: cover;
+      z-index: 99;
+    }
+
+    .marketingVideo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* la vidéo couvre toute la div */
+      border-radius: inherit;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .partenershipContainer {
+      width: 100%;
+      max-width: 1100px;
+      margin: 48px auto; /* top/bottom + centrage */
+      padding: 0 16px;
+    }
+
+    .partenership {
+      display: flex;
+      flex-wrap: wrap; /* passe à la ligne si pas la place */
+      justify-content: center; /* ou space-between si tu préfères */
+      align-items: center;
+      gap: clamp(16px, 4vw, 80px); /* gap fluide */
+    }
+
+    /* optionnel : évite que les SVG explosent / garde des tailles propres */
+    .svgContainer {
+      flex: 0 0 auto;
+    }
+
+    .svgContainer svg {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    @media only screen and (max-width: 1024px) {
+      .projectBorder {
+        margin: 0;
+      }
+
+      .videoGallery {
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .partenershipContainer {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0px 40px;
+        gap: 30px;
+      }
+    }
+
+    /* Responsive */
+  </style>
+
+  <body>
+    <header class="ae-container-fluid ae-container-fluid--full rk-header">
+      <input type="checkbox" id="mobile-menu" class="rk-mobile-menu" />
+      <label for="mobile-menu">
+        <svg>
+          <use xlink:href="/assets/img/symbols.svg#bar"></use>
+        </svg>
+        <svg>
+          <use xlink:href="/assets/img/symbols.svg#bar"></use>
+        </svg>
+        <svg>
+          <use xlink:href="/assets/img/symbols.svg#bar"></use>
+        </svg>
+      </label>
+      <div class="ae-container-fluid rk-topbar">
+        <h1 class="rk-logo name">
+          <a href="index.html">Samy <br />AYOUB FAWAZ</a>
+        </h1>
+        <nav class="rk-navigation">
+          <ul class="rk-menu">
+            <li class="active rk-menu__item"><a href="index.html" class="rk-menu__link">Portfolio</a></li>
+            <li class="rk-menu__item"><a href="contact.html" class="rk-menu__link">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <div id="trigger4"></div>
+    <section class="ae-container-flxuid ae-container-fluid--full">
+      <header class="rk-portfolio-cover item-inside-15">
+        <div class="item-inside__meta"></div>
+      </header>
+
+      <div class="ae-container-fluid ae-container-fluid--inner rk-portfolio--inner">
+        <div class="ae-container-fluid">
+          <div class="ae-grid ae-grid--collapse rk-portfolio-info"></div>
+
+          <h1 class="ae-u-bolder rk-portfolio-title titre">standard +</h1>
+          <p class="ae-theta rk-portfolio-category sous-titre">ENTREPRENEURSHIP next.js express.js solidity gcode</p>
+        </div>
+
+        <div class="ae-grid ae-grid--collapse au-xs-ptp-1 au-xs-pbp-1">
+          <div class="ae-grid__item item-lg-9">
+            <h3>
+With a background in both design and engineering, I built my own product in the intersection of tech and design. <br>I owned the full stack: product design, engineering, go-to-market, and operations.
+
+
+
+              <ul>
+                <li>+40k€ raised</li>
+                <li>Onboarded 10 professional designers and 4 interns recruitment</li>
+                <li>Successful product launch and long term partnerships with the Sorbonne Center for AI</li>
+              </ul>
+            </h3>
+          </div>
+        </div>
+
+        <div class="ae-grid ae-grid--collapse au-xs-ptp-1 au-xs-pbp-1 projectBorder">
+          <div class="ae-grid ae-grid--collapse">
+            <div class="ae-grid__item item-lg-9">
+              <h4>standard+ is a platform dedicated to produce design home objects like lamp and small storage on demand with an highly automated 3D printed process and an NFC/blockchain certification.</h4>
+
+              <div class="actionRow">
+                <button>
+                  <a href="https://standardplus.app"><h6>See standard + live</h6></a>
+                </button>
+
+                <span id="toggleDetails" class="toggleLink">Learn more ↓</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="projectDetails">
+            <div class="ae-grid ae-grid--collapse au-xs-ptp-1">
+              <div class="ae-grid__item item-lg-5">
+                <h3>→ Problems :</h3>
+                <h4 class="text">90% of French consumers often perceive local design as too expensive compared to its perceived value.</h4>
+                <br />
+                <h4>85% of designers and creators only receive 1–3% of the revenues from their creations.</h4>
+              </div>
+
+              <div class="ae-grid__item item-lg-5 item-lg--offset-1">
+                <h3>→ Solution :</h3>
+                <h4>
+                  Make design accessible through technology. Revolutionizing the distribution of design objects through 3D printing and a digital library of objects.
+                  <p>→ For on-demand, certified, local, and recyclable everyday objects.</p>
+                </h4>
+              </div>
+            </div>
+
+            <div class="ae-grid ae-grid--collapse au-xs-ptp-1">
+              <div class="ae-grid__item item-lg-6">
+                <h3>How it works :</h3>
+
+                <ul>
+                  <li><h4>Designers and creators upload their digital objects to the platform…</h4></li>
+                  <li><h4>Customers explore and easily purchase 3D-printed design objects…</h4></li>
+                  <li><h4>They benefit from copyright protection while accessing efficient, traceable, and scalable 3D manufacturing…</h4></li>
+                  <li><h4>Produced locally, empowering independent designers and making design more affordable and accessible.</h4></li>
+                </ul>
+              </div>
+              <div class="ae-grid__item item-lg-6">
+                <img src="/assets/img/std/process.png" alt="Urku Portfolio" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ae-grid ae-grid--collapse au-xs-ptp-1 au-xs-pbp-1">
+          <div class="ae-grid ae-grid--collapse">
+            <div class="ae-grid__item item-lg-6">
+              <h3>→ Tech stack :</h3>
+
+              <h4>I developed the entire MVP from scratch using modern web technologies. The goal was to make a fully automated system — from digital order to physical 3D print.</h4>
+              <br/>
+              <h4>I built :</h4>
+              <ul>
+                <li><h4>From-scratch marketplace: in Next.js with an express.js API and a MongoDB database. Checkout flow with custom stripe and NextAuth integration.</h4></li>
+                <li><h4>AI and data: vector-embedding-based object library exploration and OpenAI API integration.</h4></li>
+                <li><h4>Certification and security: cryptographic NFC chip that contains off-chain data to certificate object.</h4></li>
+                <li><h4>Infrastructure: AWS EC2 hosting the express API and a dockerized 3D-slicing service. Google Cloud Storage used for server-side Google Tag Manager and analytics.</h4></li>
+              </ul>
+            </div>
+
+            <div class="ae-grid__item item-lg-5 item-lg--offset-1">
+              <video autoplay muted loop playsinline preload="metadata" poster="poster.jpg" disablepictureinpicture disableremoteplayback aria-hidden="true" style="width: 100%; height: auto; display: block; pointer-events: none; z-index: 99; border-radius: 32px">
+                <!-- <source src="video.webm" type="video/webm" /> -->
+                <source src=".//assets/video/printer.mp4" type="video/mp4" />
+                <!-- Fallback -->
+                Votre navigateur ne supporte pas la vidéo HTML5.
+              </video>
+            </div>
+          </div>
+        </div>
+
+        <div class="ae-grid ae-grid--collapse au-xs-ptp-1 au-xs-pbp-1">
+          <div class="ae-grid ae-grid--collapse">
+            <div class="ae-grid__item item-lg-8">
+              <h3>→ Design system :</h3>
+              <h4>After several iterations, I designed a visual system that lets the objects take center stage. The goal was to build a minimalist and modular identity where the interface disappears — letting each 3D piece express its own materiality, light, and form. This system defines consistent rules for typography, color, and layout to harmonize both the digital platform and physical packaging.</h4>
+
+              <!-- <h4 class="text">90% of French consumers often perceive local design as too expensive compared to its perceived value.</h4> -->
+            </div>
+          </div>
+
+          <div class="ae-grid__item item-lg-12">
+            <img src="/assets/img/std/design.png" alt="standard+ design system" />
+          </div>
+
+          <div class="ae-grid__item item-lg-6">
+            <video autoplay muted loop playsinline preload="metadata" poster="poster.jpg" disablepictureinpicture disableremoteplayback aria-hidden="true" style="width: 100%; height: auto; display: block; pointer-events: none; z-index: 99; border-radius: 4px">
+              <!-- <source src="video.webm" type="video/webm" /> -->
+              <source src=".//assets/video/navbar.mp4" type="video/mp4" />
+              <!-- Fallback -->
+              Votre navigateur ne supporte pas la vidéo HTML5.
+            </video>
+          </div>
+        </div>
+
+        <div class="ae-grid ae-grid--collapse au-xs-ptp-1 au-xs-pbp-1">
+
+
+              
+              <div class="ae-grid__item item-lg-8">
+                <h3>→ Marketing :</h3>
+                <h4>To grow the platform, I designed and managed several digital campaigns on Meta Ads — combining my 3D and motion design skills to create high-performing visuals. Each campaign was optimized with data-driven iterations, reaching a 4–5% conversion rate and generating hundreds of qualified leads at a very low CAC. Beyond visuals, I also built the full marketing pipeline: audience targeting, tracking (GTM / GA4 server-side), and creative testing.
+</h4>
+              </div>
+
+              <div class="videoGallery ae-grid__item item-lg-12">
+                <div class="marketingVideoContainer">
+                  <video class="marketingVideo" autoplay muted loop playsinline preload="metadata" poster="poster.jpg" disablepictureinpicture disableremoteplayback aria-hidden="true">
+                    <!-- <source src="video.webm" type="video/webm" /> -->
+                    <source src=".//assets/video/mk1.mp4" type="video/mp4" />
+                    <!-- Fallback -->
+                    Votre navigateur ne supporte pas la vidéo HTML5.
+                  </video>
+                </div>
+                <div class="marketingVideoContainer">
+                  <video class="marketingVideo" autoplay muted loop playsinline preload="metadata" poster="poster.jpg" disablepictureinpicture disableremoteplayback aria-hidden="true">
+                    <!-- <source src="video.webm" type="video/webm" /> -->
+                    <source src=".//assets/video/mk2.mp4" type="video/mp4" />
+                    <!-- Fallback -->
+                    Votre navigateur ne supporte pas la vidéo HTML5.
+                  </video>
+                </div>
+                <div class="marketingVideoContainer">
+                  <video class="marketingVideo" autoplay muted loop playsinline preload="metadata" poster="poster.jpg" disablepictureinpicture disableremoteplayback aria-hidden="true">
+                    <!-- <source src="video.webm" type="video/webm" /> -->
+                    <source src=".//assets/video/mk3.mp4" type="video/mp4" />
+                    <!-- Fallback -->
+                    Votre navigateur ne supporte pas la vidéo HTML5.
+                  </video>
+                </div>
+                <div class="marketingVideoContainer">
+                  <video class="marketingVideo" autoplay muted loop playsinline preload="metadata" poster="poster.jpg" disablepictureinpicture disableremoteplayback aria-hidden="true">
+                    <!-- <source src="video.webm" type="video/webm" /> -->
+                    <source src=".//assets/video/mk4.mp4" type="video/mp4" />
+                    <!-- Fallback -->
+                    Votre navigateur ne supporte pas la vidéo HTML5.
+                  </video>
+                </div>
+                <div class="marketingVideoContainer">
+                  <video class="marketingVideo" autoplay muted loop playsinline preload="metadata" poster="poster.jpg" disablepictureinpicture disableremoteplayback aria-hidden="true">
+                    <!-- <source src="video.webm" type="video/webm" /> -->
+                    <source src=".//assets/video/mk5.mp4" type="video/mp4" />
+                    <!-- Fallback -->
+                    Votre navigateur ne supporte pas la vidéo HTML5.
+                  </video>
+                </div>
+                <div class="marketingVideoContainer">
+                  <video class="marketingVideo" autoplay muted loop playsinline preload="metadata" poster="poster.jpg" disablepictureinpicture disableremoteplayback aria-hidden="true">
+                    <!-- <source src="video.webm" type="video/webm" /> -->
+                    <source src=".//assets/video/mk6.mp4" type="video/mp4" />
+                    <!-- Fallback -->
+                    Votre navigateur ne supporte pas la vidéo HTML5.
+                  </video>
+                </div>
+  
+
+
+
+              <!-- <h4 class="text">90% of French consumers often perceive local design as too expensive compared to its perceived value.</h4> -->
+            </div>
+
+
+          </div>
+                  <div class="ae-grid ae-grid--collapse au-xs-ptp-1 au-xs-pbp-1">
+          <div class="ae-grid ae-grid--collapse">
+            <div class="ae-grid__item item-lg-8">
+              <h3>→ Partenerships :</h3>
+              <h4>standard+ received financial and institutional support from several key institutions that believe in the future of local and sustainable production.</h4>
+              <div class="partenershipContainer">
+                <div class="partenership">
+                  <div class="svgContainer">
+                    <svg width="89" height="90" viewBox="0 0 89 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M78.2457 65.8091C74.7189 65.8091 71.2462 68.052 71.2462 72.1517C71.2462 77.0728 75.9283 77.9759 77.3829 78.4922C78.8376 79.0086 81.7025 79.3701 81.7025 81.1426C81.7025 82.377 80.408 82.841 78.7229 82.841C76.8429 82.841 75.3432 81.8116 74.4393 80.2066L70.3815 82.3321C70.6936 83.1986 73.0503 87.4832 78.7229 87.4832C83.1809 87.4832 86.4693 85.1428 86.4693 81.0827C86.4693 77.8728 84.7164 76.1016 80.5502 74.8699C77.3083 73.9107 76.013 73.3576 76.013 72.0319C76.013 71.0441 76.9628 70.4532 78.2457 70.4532C80.3233 70.4532 81.1744 71.5679 81.8942 72.6047L85.8722 70.5131C85.2123 69.2065 83.2639 65.8091 78.2457 65.8091ZM2.52734 66.2262V87.0641H7.29223V80.5159H10.4215C14.5318 80.5159 17.7185 77.3303 17.7185 73.3711C17.7185 69.4118 14.5318 66.2262 10.4215 66.2262H2.52734ZM24.722 66.2262L17.6307 87.0641H22.8448L24.0151 83.4018C25.2121 83.7084 26.4691 83.8708 27.7615 83.8708C29.0539 83.8708 30.3109 83.7084 31.5079 83.4018L32.6741 87.0641H37.8862L30.7989 66.2262H24.722ZM40.8458 66.2262V87.0641H45.6127V80.5259H48.053L51.8093 87.0641H56.9317L52.5542 79.518C54.8554 78.4363 56.3366 75.9311 56.3366 73.3711C56.3366 69.4104 53.149 66.2262 49.1873 66.2262H40.8458ZM61.377 66.2262V87.0641H66.1439V66.2262H61.377ZM7.29223 70.6907H10.4215C11.8802 70.6907 12.9537 71.8519 12.9537 73.3711C12.9537 74.8902 11.8802 76.0514 10.4215 76.0514H7.29223V70.6907ZM45.6127 70.6907H49.1873C50.4987 70.6907 51.5698 71.9184 51.5698 73.5247C51.5698 75.1283 50.4987 76.3567 49.1873 76.3567H45.6127V70.6907ZM27.7615 71.6747L30.2258 79.3943C29.4378 79.596 28.6122 79.7017 27.7615 79.7017C26.9108 79.7017 26.0832 79.596 25.2952 79.3943L27.7615 71.6747Z"
+                        fill="#4E4E4E"
+                      ></path>
+                      <path d="M25.8769 55.1477V61.7637H27.1011V55.1477H25.8769ZM16.1914 55.1498L18.488 61.7617H19.792L22.0906 55.1498H20.9083L19.139 60.4485L17.3817 55.1498H16.1914ZM31.8139 55.1498V61.7637H35.5964V60.7239H32.9024V55.1498H31.8139ZM39.149 55.1498V61.7637H42.9313V60.7239H40.2373V55.1498H39.149ZM46.484 55.1498V61.7637H50.5019V60.7239H47.5703V58.9377H49.3996V57.9079H47.5703V56.1875H50.454V55.1498H46.484ZM59.1889 55.1498V61.7617H61.7889C63.613 61.7617 64.9562 60.2988 64.9562 58.4567C64.9562 56.6052 63.613 55.1498 61.7889 55.1498H59.1889ZM68.7905 55.1498V61.7637H72.8084V60.7239H69.8788V58.9377H71.7081V57.9079H69.8788V56.1875H72.7605V55.1498H68.7905ZM60.2772 56.1895H61.7889C63.0473 56.1895 63.9058 57.1433 63.9058 58.4567C63.9058 59.7606 63.0473 60.7239 61.7889 60.7239H60.2772V56.1895Z" fill="#4E4E4E"></path>
+                      <path d="M70.3665 31.0653C70.1839 31.0643 70.0339 31.2384 69.8212 31.7043C65.0674 42.108 56.307 47.0905 47.0284 47.16C28.5505 47.2948 24.1989 32.1022 24.0816 31.6907L33.5128 33.4524C33.5606 33.5545 37.1678 41.8437 46.6944 41.8437C56.7705 41.8437 63.786 31.7983 63.786 21.4083C63.786 12.0619 59.8392 6.71295 54.1134 2.5166L28.4428 14.3903C28.2096 14.498 28.2451 14.8399 28.4946 14.8972C42.715 18.1889 45.1281 28.3977 44.456 34.1894C44.355 35.0532 44.9222 34.9088 45.4689 33.2861C47.4047 27.5325 46.0128 19.1548 38.3048 14.4394C38.3048 14.4394 52.573 7.30561 52.5743 7.30697C54.288 8.63536 59.902 12.4162 59.902 21.4083C59.902 30.4073 54.7024 38.582 46.6945 38.582C38.7424 38.582 35.9722 30.4632 35.93 30.3514L18.9666 26.6565C18.6953 26.587 18.4349 26.8077 18.4676 27.0856C19.9413 40.0207 30.3023 50.6219 45.3176 50.6219C57.7753 50.6219 66.2345 43.777 69.8363 34.1022C70.6665 31.8746 70.631 31.0694 70.3665 31.0653Z" fill="#4E4E4E"></path>
+                    </svg>
+                  </div>
+                  <div class="svgContainer">
+                    <svg width="122" height="35" viewBox="0 0 122 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <g clip-path="url(#clip0_7085_583)">
+                        <path d="M16.4102 9.85547V31.5532H21.6592V25.1303H23.3113C26.9526 25.1303 28.754 23.7205 29.6545 22.0748C30.3178 20.6973 30.6271 19.176 30.5544 17.6488H30.5489C30.5489 15.2203 29.804 9.85547 23.7736 9.85547H16.4102ZM21.6592 11.9317L22.168 11.9372C24.4788 11.9372 25.2616 14.1683 25.2616 17.6543C25.2616 20.9834 24.4779 23.0213 22.0886 23.0213H21.6592V11.9317Z" fill="#4B3C3C"></path>
+                        <path d="M0 3.43262V25.0921H7.36344C13.3953 25.0921 14.1388 19.7656 14.1388 17.337C14.2107 15.8096 13.9004 14.2883 13.2361 12.911C12.3356 11.2668 10.5342 9.8555 6.89296 9.8555H5.24631V3.43262H0ZM5.24631 11.9317H5.67849C8.0677 11.9317 8.85144 13.9668 8.85144 17.296C8.85144 20.782 8.06859 23.0158 5.75781 23.0158H5.24631V11.9317Z" fill="#4B3C3C"></path>
+                        <path d="M66.4222 9.38499C64.7595 9.34708 63.0991 9.53106 61.485 9.93208V12.2818C61.8185 12.1459 62.1591 12.0282 62.5053 11.929C64.5037 11.3421 68.1072 10.9514 68.1072 14.555V15.0255H68.0278C67.5195 15.0255 66.7729 15.0264 65.8724 15.1049C64.9152 15.1772 63.9697 15.3608 63.0551 15.6519C62.0165 15.9323 61.1048 16.5588 60.4706 17.4278C59.8365 18.2968 59.5179 19.3562 59.5675 20.4308C59.5675 23.8776 61.7968 25.1303 64.8904 25.1303H73.3152L73.3535 15.0255C73.3535 11.5003 70.9261 9.38499 66.4222 9.38499ZM68.0333 16.9786H68.1126V22.9693L67.1717 22.9721C66.0359 22.9301 64.8603 22.6981 64.8603 20.2695C64.8326 19.8401 64.8947 19.4097 65.0428 19.0057C65.1908 18.6017 65.4216 18.2331 65.7202 17.9234C66.0188 17.6137 66.3788 17.3697 66.7771 17.207C67.1754 17.0443 67.6032 16.9665 68.0333 16.9786Z" fill="#929292"></path>
+                        <path d="M115.182 9.31399C109.308 9.27477 107.859 13.5901 107.859 16.9514C107.859 19.8884 108.997 25.5681 116.673 25.5681C118.275 25.5679 119.87 25.3433 121.41 24.9007V22.3567C118.042 23.6816 113.305 23.8385 112.991 17.4547V17.3754H121.998V15.8162C121.998 12.0571 119.49 9.31399 115.182 9.31399ZM114.99 11.4668C116.321 11.4668 116.635 13.2615 116.714 14.8287V15.1433V15.1898H113.07V15.0721C113.227 12.9965 113.698 11.4668 114.99 11.4668Z" fill="#929292"></path>
+                        <path d="M99.9859 11.4215C98.3796 11.4215 97.5967 14.28 98.1065 18.5489C98.6933 23.7184 103.315 23.7184 106.448 22.3878V24.9341C104.865 25.3697 103.232 25.5934 101.591 25.5993C100.449 25.6931 99.3 25.5418 98.2211 25.1557C97.1423 24.7695 96.1584 24.1573 95.3352 23.3601C94.5121 22.5629 93.8687 21.5991 93.4482 20.5331C93.0276 19.4672 92.8396 18.3237 92.8967 17.1792C92.8967 13.8892 94.0717 9.34582 100.298 9.34582C101.154 9.27808 102.014 9.39275 102.823 9.68224C103.631 9.97173 104.368 10.4295 104.987 11.0252C105.605 11.6209 106.089 12.341 106.409 13.138C106.728 13.9349 106.874 14.7906 106.838 15.6483H101.86C101.86 13.3766 101.389 11.4186 99.9803 11.4186" fill="#929292"></path>
+                        <path d="M38.0287 9.85571V25.1302H32.8203V9.85571H38.0287Z" fill="#4B3C3C"></path>
+                        <path d="M90.583 25.1301H85.3354V15.9649C85.3354 12.3612 83.9643 12.1651 82.0457 12.1259H81.6927V25.1287H76.4844V9.81641C76.9157 9.85562 78.3246 9.89484 83.0246 9.89484C90.5872 9.89484 90.6222 13.42 90.6222 16.2394L90.583 25.1301Z" fill="#929292"></path>
+                        <path d="M51.0284 3.43286V5.62614C50.5186 5.62614 50.0103 5.62614 49.5005 5.66535C49.0029 5.68621 48.5126 5.79232 48.051 5.97908C47.56 6.19226 47.1523 6.56053 46.8905 7.02749C46.6287 7.49445 46.5272 8.03435 46.6015 8.56451V9.85723H50.2833V12.0897H46.6015V25.0925H41.3945V9.7774C41.3945 4.09813 45.271 3.43286 50.0103 3.43286H51.0284Z" fill="#929292"></path>
+                        <path d="M59.4506 11.5798C59.012 11.5521 58.5727 11.622 58.1644 11.7845C57.7561 11.947 57.3889 12.198 57.0892 12.5195C56.7896 12.841 56.565 13.225 56.4316 13.6437C56.2982 14.0625 56.2593 14.5056 56.3177 14.9412V25.0854H51.1094V14.7843C51.1094 11.6905 53.9677 9.34033 58.3918 9.34033H59.4492L59.4506 11.5798Z" fill="#929292"></path>
+                        <path d="M35.4354 6.72269C34.7706 6.72269 34.1207 6.52555 33.568 6.1562C33.0153 5.78685 32.5845 5.26188 32.3301 4.64768C32.0757 4.03347 32.0091 3.35762 32.1388 2.70558C32.2685 2.05354 32.5886 1.45461 33.0587 0.984517C33.5287 0.514424 34.1276 0.194287 34.7796 0.0645888C35.4316 -0.0651094 36.1074 0.00145638 36.7216 0.255869C37.3358 0.510281 37.8607 0.941113 38.23 1.49388C38.5994 2.04665 38.7965 2.69653 38.7965 3.36135C38.7965 3.80276 38.7096 4.23986 38.5407 4.64768C38.3717 5.05549 38.1242 5.42605 37.812 5.73818C37.4999 6.0503 37.1294 6.2979 36.7216 6.46682C36.3138 6.63575 35.8768 6.72269 35.4354 6.72269Z" fill="#4B3C3C"></path>
+                        <path d="M35.4354 35C34.7706 35 34.1207 34.8029 33.568 34.4335C33.0153 34.0642 32.5845 33.5392 32.3301 32.925C32.0757 32.3108 32.0091 31.635 32.1388 30.9829C32.2685 30.3309 32.5886 29.732 33.0587 29.2619C33.5287 28.7918 34.1276 28.4716 34.7796 28.3419C35.4316 28.2122 36.1074 28.2788 36.7216 28.5332C37.3358 28.7876 37.8607 29.2185 38.23 29.7712C38.5994 30.324 38.7965 30.9739 38.7965 31.6387C38.7965 32.0801 38.7096 32.5172 38.5407 32.925C38.3717 33.3328 38.1242 33.7034 37.812 34.0155C37.4999 34.3276 37.1294 34.5752 36.7216 34.7442C36.3138 34.9131 35.8768 35 35.4354 35Z" fill="#929292"></path>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_7085_583"><rect width="122" height="35" fill="white"></rect></clipPath>
+                      </defs>
+                    </svg>
+                  </div>
+                  <div class="svgContainer">
+                    <svg width="142" height="57" viewBox="0 0 142 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <g clip-path="url(#clip0_7085_608)">
+                        <path d="M16.5625 17.9144H18.5026V13.769C18.5026 13.2508 18.0549 12.8066 17.5325 12.8066C17.0102 12.8066 16.5625 13.2508 16.5625 13.769V17.9144Z" fill="#6A6A6A"></path>
+                        <path d="M12.5352 17.9144H14.4753V13.769C14.4753 13.2508 14.0275 12.8066 13.5052 12.8066C12.9829 12.8066 12.5352 13.2508 12.5352 13.769V17.9144Z" fill="#6A6A6A"></path>
+                        <path d="M20.5938 17.9144H22.5338V13.769C22.5338 13.2508 22.0861 12.8066 21.5638 12.8066C21.0415 12.8066 20.5938 13.2508 20.5938 13.769V17.9144Z" fill="#6A6A6A"></path>
+                        <path d="M17.9817 2.66497C19.2502 2.88705 19.6979 3.99744 19.6979 4.7377V6.36627H20.8918V7.25458C23.9512 8.66108 26.1151 11.8442 26.1151 15.1013V15.1754V17.9883H33.1293V15.1754C32.9801 5.99614 26.4136 0.444195 17.7578 0.296143L17.9817 2.66497Z" fill="#6A6A6A"></path>
+                        <path d="M16.7148 4.7377V6.36627H18.4311V4.7377C18.4311 4.29354 18.058 3.92341 17.6103 3.92341C17.0879 3.84939 16.7148 4.29354 16.7148 4.7377Z" fill="#6A6A6A"></path>
+                        <path d="M18.8013 22.4299C11.5633 20.5792 8.80237 19.0247 8.80237 14.4351C8.80237 11.1779 11.0409 8.36492 14.1003 7.10648V6.36622H15.2942V4.81168C15.2942 3.99739 15.8166 2.887 17.0851 2.73895L17.3089 0.370117C8.57851 0.370117 1.19123 6.36622 1.56432 14.4351C1.93742 23.4662 12.011 26.0571 17.3836 27.1675C21.6368 28.0558 31.8596 30.4247 34.3967 37.6052C34.3221 37.6052 35.2921 25.761 18.8013 22.4299Z" fill="#6A6A6A"></path>
+                        <path d="M16.415 35.0143C23.7277 37.2351 25.5932 39.9001 25.5932 43.7494C25.5932 49.5975 21.0414 51.9663 15.2958 51.9663C9.84857 51.9663 5.14758 49.4494 2.01358 46.1923L0.819672 48.5611C3.13286 52.8546 9.62472 56.778 16.7881 56.778C26.1155 56.852 34.0251 52.5585 34.0251 43.8975C34.0251 34.6442 23.8023 30.9429 18.1313 29.7585C13.6541 28.7962 2.46129 25.8351 0.446577 19.6169C0.446577 19.6169 -1.79199 30.4247 16.415 35.0143Z" fill="#6A6A6A"></path>
+                        <path d="M44.5447 23.1701C44.5447 23.1701 45.8132 24.3545 47.4548 24.3545C48.3502 24.3545 49.0964 23.9104 49.0964 23.0221C49.0964 21.0234 43.6492 21.3935 43.6492 17.9883C43.6492 16.1376 45.2909 14.8052 47.5294 14.8052C49.768 14.8052 50.9619 15.9896 50.9619 15.9896L50.0665 17.6182C50.0665 17.6182 48.9472 16.6558 47.5294 16.6558C46.5594 16.6558 45.8132 17.174 45.8132 17.9883C45.8132 19.913 51.2604 19.4688 51.2604 22.948C51.2604 24.7247 49.8426 26.1311 47.4548 26.1311C44.9178 26.1311 43.5 24.6506 43.5 24.6506L44.5447 23.1701Z" fill="#C3C3C3"></path>
+                        <path d="M60.0672 24.3545C62.1565 24.3545 63.8727 22.6519 63.8727 20.4311C63.8727 18.2843 62.1565 16.6558 60.0672 16.6558C57.9778 16.6558 56.2616 18.2843 56.2616 20.4311C56.2616 22.7259 57.9032 24.3545 60.0672 24.3545ZM60.0672 14.8792C63.425 14.8792 66.0367 17.322 66.0367 20.5051C66.0367 23.7623 63.4997 26.2792 60.0672 26.2792C56.7093 26.2792 54.0977 23.7623 54.0977 20.5051C54.0977 17.322 56.6347 14.8792 60.0672 14.8792Z" fill="#C3C3C3"></path>
+                        <path d="M73.3493 20.2092C74.4686 20.2092 75.1402 19.5429 75.1402 18.5066C75.1402 17.4702 74.6925 16.804 73.0509 16.804H71.4839V20.2092H73.3493ZM69.3945 15.0273H73.1255C74.394 15.0273 74.9163 15.1014 75.4387 15.3234C76.558 15.8416 77.3041 16.878 77.3041 18.3585C77.3041 19.691 76.558 20.8754 75.3641 21.3936C75.3641 21.3936 75.5133 21.5416 75.7371 21.9118L78.125 25.9832H75.8118L73.4986 21.9118H71.4839V25.9832H69.3945V15.0273Z" fill="#C3C3C3"></path>
+                        <path d="M85.4373 24.2806C86.4819 24.2806 87.0789 23.6144 87.0789 22.652C87.0789 21.7637 86.4819 21.0975 85.4373 21.0975H83.1987V24.2806H85.4373ZM85.2134 19.5429C86.1088 19.5429 86.6312 18.9507 86.6312 18.1364C86.6312 17.3221 86.1089 16.804 85.1388 16.804H83.1241V19.5429H85.2134ZM81.1094 15.0273H85.2134C87.3028 15.0273 88.7951 16.0637 88.7951 17.8403C88.7951 18.8767 88.2728 19.765 87.3774 20.2092C88.6459 20.5793 89.2428 21.6897 89.2428 22.8001C89.2428 25.0209 87.3774 25.9832 85.288 25.9832H81.1094V15.0273Z" fill="#C3C3C3"></path>
+                        <path d="M97.8992 24.3545C99.9885 24.3545 101.705 22.6519 101.705 20.4311C101.705 18.2843 99.9885 16.6558 97.8992 16.6558C95.8099 16.6558 94.0936 18.2843 94.0936 20.4311C94.0936 22.7259 95.8099 24.3545 97.8992 24.3545ZM97.8992 14.8792C101.257 14.8792 103.869 17.322 103.869 20.5051C103.869 23.7623 101.332 26.2792 97.8992 26.2792C94.5414 26.2792 91.9297 23.7623 91.9297 20.5051C91.9297 17.322 94.5414 14.8792 97.8992 14.8792Z" fill="#C3C3C3"></path>
+                        <path d="M107.449 15.0273H109.539L113.941 21.3936C114.389 22.0598 114.911 23.0962 114.911 23.0962C114.911 23.0962 114.762 22.0598 114.762 21.3936V15.0273H116.851V25.9832H114.762L110.359 19.691C109.912 19.0247 109.389 17.9884 109.389 17.9884C109.389 17.9884 109.539 19.0247 109.539 19.691V25.9832H107.449V15.0273Z" fill="#C3C3C3"></path>
+                        <path d="M121.031 15.0273H123.121L127.523 21.3936C127.971 22.0598 128.493 23.0962 128.493 23.0962C128.493 23.0962 128.344 22.0598 128.344 21.3936V15.0273H130.433V25.9832H128.344L123.941 19.691C123.494 19.0247 122.971 17.9884 122.971 17.9884C122.971 17.9884 123.121 19.0247 123.121 19.691V25.9832H121.031V15.0273Z" fill="#C3C3C3"></path>
+                        <path d="M134.613 15.0273V26.0572H141.777V24.2806H136.703V21.3196H140.583V19.617H136.703V16.7299H141.553V15.0273H134.613Z" fill="#C3C3C3"></path>
+                        <path d="M43.5781 30.8689H45.6675V37.9754C45.6675 39.456 46.7121 40.2702 48.2791 40.2702C49.8461 40.2702 50.8908 39.456 50.8908 37.9014V30.7949H52.9801V37.9014C52.9801 40.4183 51.1146 42.0469 48.2791 42.0469C45.4436 42.0469 43.5781 40.3443 43.5781 37.9014V30.8689Z" fill="#C3C3C3"></path>
+                        <path d="M56.4844 30.9429H58.5737L62.9762 37.3091C63.4239 37.9753 63.9463 39.0117 63.9463 39.0117C63.9463 39.0117 63.797 37.9753 63.797 37.3091V30.9429H65.8864V41.8987H63.797L59.3945 35.6065C58.9468 34.9403 58.4245 33.9039 58.4245 33.9039C58.4245 33.9039 58.5737 34.9403 58.5737 35.6065V41.8987H56.4844V30.9429Z" fill="#C3C3C3"></path>
+                        <path d="M71.7065 30.9429H69.6172V41.8987H71.7065V30.9429Z" fill="#C3C3C3"></path>
+                        <path d="M74.0195 30.9429H76.2581L78.7951 38.1234C79.019 38.7896 79.2429 39.752 79.2429 39.752H79.3175C79.3175 39.752 79.5413 38.7896 79.7652 38.1234L82.3022 30.9429H84.5408L80.3621 41.8987H78.2728L74.0195 30.9429Z" fill="#C3C3C3"></path>
+                        <path d="M86.7812 30.9429H93.6462V32.6455H88.8706V35.5325H92.7508V37.2351H88.8706V40.1961H93.9447V41.9727H86.7812V30.9429Z" fill="#C3C3C3"></path>
+                        <path d="M100.884 36.1247C102.004 36.1247 102.675 35.4585 102.675 34.4221C102.675 33.3857 102.228 32.7195 100.586 32.7195H99.019V36.1247H100.884ZM96.9297 30.9429H100.661C101.929 30.9429 102.451 31.0169 102.974 31.239C104.093 31.7572 104.839 32.7935 104.839 34.274C104.839 35.6065 104.093 36.7909 102.899 37.3091C102.899 37.3091 103.048 37.4572 103.272 37.8273L105.66 41.8987H103.347L101.034 37.8273H99.019V41.8987H96.9297V30.9429Z" fill="#C3C3C3"></path>
+                        <path d="M108.642 39.1599C108.642 39.1599 109.911 40.3443 111.552 40.3443C112.448 40.3443 113.194 39.9001 113.194 39.0118C113.194 37.0131 107.747 37.3832 107.747 33.978C107.747 32.1274 109.389 30.7949 111.627 30.7949C113.866 30.7949 115.06 31.9793 115.06 31.9793L114.164 33.6079C114.164 33.6079 113.045 32.6456 111.627 32.6456C110.657 32.6456 109.911 33.1638 109.911 33.978C109.911 35.9027 115.358 35.4586 115.358 38.9378C115.358 40.7144 113.94 42.1209 111.552 42.1209C109.015 42.1209 107.598 40.6404 107.598 40.6404L108.642 39.1599Z" fill="#C3C3C3"></path>
+                        <path d="M120.285 30.9429H118.195V41.8987H120.285V30.9429Z" fill="#C3C3C3"></path>
+                        <path d="M126.403 32.6455H122.672V30.9429H132.298V32.6455H128.492V41.9727H126.403V32.6455Z" fill="#C3C3C3"></path>
+                        <path d="M134.688 30.9429V41.8987H141.851V40.1961H136.777V37.2351H140.657V35.5325H136.777V32.6455H141.552V30.9429H134.688ZM138.642 28.1299L137.374 30.2026H139.015L140.732 28.1299H138.642Z" fill="#C3C3C3"></path>
+                      </g>
+                      <defs>
+                        <clipPath id="clip0_7085_608"><rect width="142" height="57" fill="white"></rect></clipPath>
+                      </defs>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <ul>
+                <li><h4>BPI France early-stage R&D funding (€40K)</h4></li>
+                <li><h4>Sorbonne Center for Artificial Intelligence — long-term incubation and mentorship for AI-driven product development</h4></li>
+                <li><h4>Ville de Paris — recognition and local network support for sustainable design initiatives</h4></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        </div>
+
+
+      </div>
+    </section>
+    <footer class="ae-container-fluid rk-footer">
+      <div class="ae-grid ae-grid--collapse"></div>
+    </footer>
+    <script src="/assets/js/svg4everybody.min.js"></script>
+    <script>
+      svg4everybody();
+    </script>
+    <script>
+      if (window.innerWidth > 1025) {
+        var controller = new ScrollMagic.Controller();
+        var head = document.getElementsByTagName("head")[0];
+        var s1 = document.createElement("script");
+        s1.type = "text/javascript";
+
+        $(document).ready(function () {
+          $(function () {
+            $(window).unload(function () {
+              var scrollPosition = $("div#element").scrollTop();
+              localStorage.setItem("scrollPosition", scrollPosition);
+            });
+            if (localStorage.scrollPosition) {
+              $("div#element").scrollTop(localStorage.getItem("scrollPosition"));
+            }
+          });
+
+          var timeline_scene4 = new TimelineMax().add(
+            TweenMax.from(".rk-topbar", 1, {
+              opacity: 0,
+            }),
+          );
+          var scene4 = new ScrollMagic.Scene({
+            triggerElement: "#trigger4",
+            duration: 150,
+            triggerHook: 0,
+          })
+            .setTween(timeline_scene4)
+            // trigger a TweenMax.to tween
+            .addTo(controller);
+        });
+      }
+    </script>
+    <script>
+      document.getElementById("toggleDetails").addEventListener("click", function () {
+        console.log("qui");
+        document.querySelector(".projectDetails").classList.toggle("is-open");
+        this.querySelector("h6").textContent = document.querySelector(".projectDetails").classList.contains("is-open") ? "Hide ↑" : "Learn more ↓";
+      });
+    </script>
+  </body>
+</html>

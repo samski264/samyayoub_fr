@@ -1,0 +1,286 @@
+/* * * * * * * * * * * * * * * * * * * * *\ 
+ aurora-themes v1.0.0 
+ Themes for Aurora Kit 
+ (c) 2015 Lionel T <elrumordelaluz@hotmail.com> (http://elrumordelaluz.com) 
+ https://github.com/aurora-kit/aurora-themes.git 
+ Licensed under  MIT 
+\* * * * * * * * * * * * * * * * * * * * */
+
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono");
+
+@font-face {
+  font-family: "itc-regular";
+  src: url("../css/fonts/plex-italic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "itc-bold";
+  src: url("../css/fonts/plex-italic.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "itc-light";
+  src: url("../css/fonts/plex-light.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "surt";
+  src: url("../css/fonts/surt.ttf") format("truetype-variations");
+  /* plage de graisses disponibles */
+  font-style: normal;
+  font-display: swap; /* bon pour les performances */
+}
+
+body {
+  line-height: 1.556;
+  font-family: "surt";
+  font-size: 1.125rem;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+body {
+  font-size: 1.125rem;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: inherit;
+
+  margin: 0 0 0.75rem;
+  margin: 0;
+}
+
+/* p {
+  margin-bottom: 1.125rem;
+  margin-top: 0;
+} */
+
+h1 {
+  font-size: 2.95312rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.2px;
+  text-rendering: optimizeLegibility;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+}
+
+h2 {
+  font-size: 2.25rem;
+    font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.2px;
+  text-rendering: optimizeLegibility;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  max-width: 820px;
+}
+
+h3 {
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.2px;
+  text-rendering: optimizeLegibility;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  max-width: 820px;
+}
+
+h4 {
+  font-size: 1.02rem;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.2px;
+  text-rendering: optimizeLegibility;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  max-width: 820px;
+}
+
+h5 {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+h6 {
+  font-size: 0.8rem;
+}
+
+.sous_titre_hover {
+  font-family: "surt";
+
+  font-size: 1.1rem;
+  color: white;
+}
+
+.text {
+  font-size: 1rem;
+  text-align: justify;
+  font-family: "surt";
+}
+
+.light_text {
+  font-family: "surt";
+}
+
+.sous-titre {
+  font-family: "surt";
+  /*  */
+
+  font-size: 1rem;
+  color: #242424;
+
+  position: relative;
+}
+
+.titre_hover {
+  font-family: "itc-light";
+}
+
+.titre {
+  font-family: "itc-light";
+  font-size: 3.5rem;
+  color: #242424;
+}
+
+.video-inside {
+  position: absolute;
+}
+
+.player {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  height: 900px;
+  width: 80vw;
+  margin: auto;
+}
+
+.player .player-inside {
+  top: 0px;
+  left: 0;
+  position: absolute;
+}
+
+.name {
+  font-family: "itc-bold";
+}
+
+.ae-grid__item > h3 {
+  margin-bottom: 25px;
+}
+
+a,
+button {
+  color: inherit;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+a:hover,
+button:hover {
+  color: #a0a0a0;
+}
+a:not(.au-underline),
+button:not(.au-underline) {
+  text-decoration: none;
+}
+
+blockquote {
+  border-left: 0;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  padding-left: 0;
+}
+blockquote footer {
+  font-family: "square721", Helvetica, Arial, sans-serif;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="email"],
+input[type="month"],
+input[type="number"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+input[type="week"],
+textarea {
+  background: #f6f6f6;
+  border: 0;
+  font-size: inherit;
+
+  margin-bottom: 0.5rem;
+  padding: 2.2rem 3rem;
+}
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="email"]:focus,
+input[type="month"]:focus,
+input[type="number"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="time"]:focus,
+input[type="url"]:focus,
+input[type="week"]:focus,
+textarea:focus {
+  outline: 0;
+}
+
+button {
+  cursor: pointer;
+}
+button:focus {
+  outline: 0;
+}
+
+pre {
+  margin-bottom: 0.5rem;
+}
+
+p.ae-eta {
+  line-height: 1.3749;
+  margin-bottom: 2rem;
+}
+
+@media only screen and (max-width: 1024px) {
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.6rem;
+  }
+  h3 {
+    font-size: 1.3rem;
+  }
+  h4 {
+    font-size: 1.1rem;
+  }
+  h5 {
+    font-size: 0.95rem;
+  }
+  h6 {
+    font-size: 0.75rem;
+  }
+
+  .player {
+    height: 300px;
+  }
+}

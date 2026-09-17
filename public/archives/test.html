@@ -1,0 +1,61 @@
+<div class="ican" data-interval="1200">
+  <div class="ican__label">I can :</div>
+
+  <div class="ican__list">
+    <div class="ican__line">build an mvp</div>
+    <div class="ican__line">produce fullstack code in ts</div>
+    <div class="ican__line">create a design system</div>
+    <div class="ican__line">deploy infra</div>
+    <div class="ican__line">build AI based features</div>
+  </div>
+</div>
+
+<style>
+  .ican { display:flex; align-items:flex-start; gap:24px; }
+  .ican__line { color: rgba(0,0,0,.18); }
+  .ican__line.is-active { color:#000; }
+</style>
+
+<script>
+(() => {
+  const root  = document.querySelector(".ican");
+  if (!root) return;
+
+  const label = root.querySelector(".ican__label");
+  const list  = root.querySelector(".ican__list");
+  const lines = Array.from(root.querySelectorAll(".ican__line"));
+  if (!label || !list || !lines.length) return;
+
+  const interval = Number(root.dataset.interval || 1200);
+  let i = 0, t;
+
+  // Aligne le BOTTOM de la ligne active sur le BOTTOM de "I can :"
+  function alignActiveToLabelBottom(activeEl){
+    const labelBottom = label.offsetTop + label.offsetHeight;
+    const lineBottom  = activeEl.offsetTop + activeEl.offsetHeight;
+    const delta = labelBottom - lineBottom; // + => descendre la liste
+    list.style.transform = `translateY(${delta}px)`;
+  }
+
+  function render(nextIndex){
+    lines.forEach((el, idx) => el.classList.toggle("is-active", idx === nextIndex));
+    alignActiveToLabelBottom(lines[nextIndex]);
+  }
+
+  function start(){
+    clearInterval(t);
+    t = setInterval(() => {
+      i = (i + 1) % lines.length;
+      render(i);
+    }, interval);
+  }
+
+  list.style.willChange = "transform";
+  list.style.transition = "transform 420ms ease";
+
+  render(i);
+  start();
+
+  window.addEventListener("resize", () => render(i));
+})();
+</script>
