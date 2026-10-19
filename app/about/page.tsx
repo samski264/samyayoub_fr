@@ -12,30 +12,30 @@ export default function About() {
           <div className="mt-[93px] flex flex-col gap-[34px]">
             <p className="w-[392px] max-w-full font-normal text-[16px] leading-normal tracking-[-0.32px] text-[#afafaf]">
               I always wanted to build things that{' '}
-              <span className="text-black">people use</span> and aligned with{' '}
+              <span className="text-black">people use</span>, aligned with{' '}
               <span className="text-black">business challenges.</span>
               <br />
               <br />
               For three years at{' '}
               <span className="text-black">standard+</span>, a startup I founded
-              at the intersection of design and additive manufacturing.
+              at the intersection of design and additive manufacturing,
               <br />
               <br />
               <span className="text-black">I built the product end-to-end</span>
               : the Next.js app, the payment flow, the AI search over the
               catalog, even a cryptographic NFC system to certify physical
               parts. I raised €40K from BPI France, got incubated at the
-              Sorbonne Center for AI, and onboard designers and mangaged team
-              of dev.
+              Sorbonne Center for AI, onboarded designers and managed the
+              dev interns.
               <br />
               <br />
               <span className="text-black">
-                I made all the usual startuper mistake
+                I made all the usual first-time founder mistakes
               </span>
-              , and do everything to never do them again.
+              , and I do everything to never make them again.
               <br />
               <br />
-              I&apos;m looking for a team where I can learn continiusly and{' '}
+              I&apos;m looking for a team where I can keep learning,{' '}
               <span className="text-black">meet great people</span> and continue
               along the path.
             </p>
