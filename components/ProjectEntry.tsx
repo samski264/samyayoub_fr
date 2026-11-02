@@ -39,13 +39,8 @@ function placePreview(el: HTMLElement, point: Point) {
   const pad = 16
   /** Clear space between the project hover frame and the image or video. */
   const gap = 24
-  const w = PREVIEW_W
   const h = el.offsetHeight || 210
-  const mid = (point.left + point.right) / 2
-  // Left of the row stays on the left. Never shove it back to the right
-  // when the gutter is narrower than the preview.
-  const openLeft = point.x < mid
-  const x = openLeft ? point.left - gap - w : point.right + gap
+  const x = point.right + gap
 
   let y = point.y - h * 0.45
   y = Math.min(Math.max(pad, y), window.innerHeight - h - pad)
