@@ -8,19 +8,25 @@ const TOOLS = [
     id: 'ai',
     label: 'ai',
     title: 'AI',
-    stacks: ['Cursor', 'Claude Code', 'Figma MCP', 'Ollama', 'vector embeddings'],
+    stacks: [
+      ['Cursor', 'Claude Code', 'Figma MCP'],
+      ['Ollama', 'vector embeddings'],
+    ],
   },
   {
     id: 'ts',
     label: 'ts',
     title: 'TypeScript',
-    stacks: ['Next.js', 'React', 'Node', 'Express', 'Zod', 'MongoDB', 'Stripe'],
+    stacks: [
+      ['Next.js', 'React', 'Node', 'Express'],
+      ['Zod', 'MongoDB', 'Stripe'],
+    ],
   },
   {
     id: 'figma',
     label: 'figma',
     title: 'Figma',
-    stacks: ['Figma', 'Pen.dev', 'Adobe', 'C4D'],
+    stacks: [['Figma', 'Pen.dev', 'Adobe', 'C4D']],
   },
 ] as const
 
@@ -178,15 +184,19 @@ function StackCard({
             </filter>
           </defs>
         </svg>
-        <ul className="flex flex-wrap items-center font-normal text-[13px] leading-[1.55] tracking-[-0.26px] text-[#6a6a6a]">
-          {tool.stacks.map((stack, index) => (
-            <li key={stack} className="flex items-center whitespace-nowrap">
-              <span>{stack}</span>
-              {index < tool.stacks.length - 1 && (
-                <span aria-hidden className="px-[8px] text-[#b5b5b5]">
-                  /
+        <ul className="font-normal text-[13px] leading-[1.55] tracking-[-0.26px] text-[#6a6a6a]">
+          {tool.stacks.map((row) => (
+            <li key={row.join('/')} className="flex items-center">
+              {row.map((stack, index) => (
+                <span key={stack} className="flex items-center whitespace-nowrap">
+                  {index > 0 && (
+                    <span aria-hidden className="px-[8px] text-[#b5b5b5]">
+                      /
+                    </span>
+                  )}
+                  <span>{stack}</span>
                 </span>
-              )}
+              ))}
             </li>
           ))}
         </ul>
