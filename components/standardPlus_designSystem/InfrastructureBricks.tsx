@@ -9,10 +9,14 @@ import type { ReactNode } from 'react'
  * Figma node fills (GRADIENT_LINEAR, top color → transparent white).
  */
 
-type Brick = {
+export type Brick = {
   title: ReactNode
   /** Top color of the vertical gradient (fades down to transparent white). */
   gradientColor: string
+  /** Title color. Defaults to white, which suits a saturated gradient. */
+  titleColor?: string
+  /** Chip fill. Defaults to a translucent white. */
+  chipBackground?: string
   stack: string[]
   bullets: string[]
 }
@@ -80,10 +84,17 @@ const BRICKS: Brick[] = [
   },
 ]
 
-export default function InfrastructureBricks() {
+export default function InfrastructureBricks({
+  bricks = BRICKS,
+  nowrap = true,
+}: {
+  bricks?: Brick[]
+  /** Keep each bullet on one line. Turn off when a line is longer than the row. */
+  nowrap?: boolean
+}) {
   return (
     <div className="flex flex-col gap-[48px] items-start w-full px-[10px] lg:gap-[72px] lg:w-[801px] lg:px-0">
-      {BRICKS.map((brick, i) => (
+      {bricks.map((brick, i) => (
         <div key={i} className="flex w-full flex-col gap-[17px] items-start lg:flex-row lg:gap-[27px] lg:w-[801px]">
           {/* Brick card with gradient background, title, and stack chips.
               Gradient lifted from Figma node fill: vertical, top color → transparent white. */}
@@ -93,7 +104,10 @@ export default function InfrastructureBricks() {
               backgroundImage: `linear-gradient(180deg, ${brick.gradientColor} 0%, rgba(255,255,255,0) 100%)`,
             }}
           >
-            <h4 className="relative z-10 w-full font-normal text-[24px] leading-[1.3] tracking-[-0.48px] text-white [word-break:break-word]">
+            <h4
+              className="relative z-10 w-full font-normal text-[24px] leading-[1.3] tracking-[-0.48px] text-white [word-break:break-word]"
+              style={brick.titleColor ? { color: brick.titleColor } : undefined}
+            >
               {brick.title}
             </h4>
             <div className="relative z-10 flex flex-wrap content-start gap-y-[5px] gap-x-[12px] h-[56px] w-full px-px">
@@ -101,6 +115,7 @@ export default function InfrastructureBricks() {
                 <span
                   key={tech}
                   className="inline-flex items-center justify-center px-[10px] py-[5px] rounded-[70px] bg-[rgba(255,255,255,0.36)] text-[10px] font-light leading-[1.3] tracking-normal text-black text-center whitespace-nowrap"
+                  style={brick.chipBackground ? { backgroundColor: brick.chipBackground } : undefined}
                 >
                   {tech}
                 </span>
@@ -109,7 +124,11 @@ export default function InfrastructureBricks() {
           </div>
 
           {/* Bullets adjacent — aligned to top of row to match Figma 213:3815 */}
-          <ul className="list-disc pl-[24px] text-[16px] font-normal leading-[1.3] tracking-[-0.32px] text-black marker:text-black lg:whitespace-nowrap">
+          <ul
+            className={`list-disc pl-[24px] text-[16px] font-normal leading-[1.3] tracking-[-0.32px] text-black marker:text-black ${
+              nowrap ? 'lg:whitespace-nowrap' : 'lg:min-w-0 lg:flex-1'
+            }`}
+          >
             {brick.bullets.map((b) => (
               <li key={b}>{b}</li>
             ))}

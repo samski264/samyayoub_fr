@@ -1,0 +1,37 @@
+.root {
+  position: absolute;
+  inset: 0;
+}
+
+.layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.road {
+  fill: none;
+  stroke: var(--road-color, var(--color-bg-page));
+  stroke-width: 8;
+  opacity: 0.94;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.arrow [data-arrow] {
+  stroke: var(--color-bg-page);
+  stroke-width: 2.2;
+  stroke-linejoin: round;
+}
+
+.shadow {
+  fill: rgb(0 0 0 / 28%);
+}
+
+/* En GPS la flèche est déjà dans le plan du sol : pas d'ombre écran. */
+.gps .shadow {
+  display: none;
+}

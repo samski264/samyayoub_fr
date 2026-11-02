@@ -34,7 +34,7 @@ export default function BodyText({
         } as CSSProperties
       }
     >
-      <p className="font-semibold leading-[1.3] lg:w-[187px] lg:shrink-0 lg:self-stretch">
+      <p className="text-left font-semibold leading-[1.3] lg:w-[187px] lg:shrink-0 lg:self-stretch">
         {label}
       </p>
       <div className="w-full font-normal leading-[1.3] lg:w-[587px] lg:shrink-0 lg:self-stretch">

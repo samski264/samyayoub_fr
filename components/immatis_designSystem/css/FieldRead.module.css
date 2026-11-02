@@ -1,0 +1,59 @@
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 754px;
+  max-width: 100%;
+  height: auto;
+  padding: 24px;
+  border-radius: var(--radius);
+  background: var(--color-grey-100);
+}
+
+.fieldLabel {
+  margin: 0;
+  font-family: var(--font-parabole);
+  font-weight: var(--wght-text);
+  font-size: 11px;
+  line-height: normal;
+  letter-spacing: 0.2px;
+  text-transform: uppercase;
+  color: var(--color-grey-700);
+}
+
+.fieldRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--s-39);
+}
+
+.fieldCode {
+  flex-shrink: 0;
+  margin: 0;
+  font-family: var(--font-aquawax);
+  font-weight: var(--weight-heading);
+  font-size: 44px;
+  line-height: 1;
+  letter-spacing: var(--tracking-tight);
+  color: #000000;
+}
+
+.fieldName,
+.fieldExample {
+  margin: 0;
+}
+
+.fieldName {
+  font-weight: var(--wght-bold);
+  font-size: var(--size-body);
+  line-height: 1.45;
+  color: #000000;
+}
+
+.fieldExample {
+  margin-top: 4px;
+  color: var(--color-grey-700);
+  font-size: var(--size-body);
+  line-height: 1.45;
+}

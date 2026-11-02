@@ -241,11 +241,16 @@ const rasterGlyphs = () => {
 type GlyphGridVideoProps = {
   className?: string
   cellSize?: number
+  /** Still frames that scroll behind the glyphs. Without this, the banner plays its videos. */
+  images?: readonly string[]
+  fallbackColor?: string
 }
 
 export default function GlyphGridVideo({
   className,
   cellSize = DEFAULT_CELL_SIZE,
+  images,
+  fallbackColor = FALLBACK_COLOR,
 }: GlyphGridVideoProps) {
   const containerRef = useRef<HTMLDivElement | null>(null)
 
@@ -257,7 +262,9 @@ export default function GlyphGridVideo({
     const perm = new Uint8Array(512)
     seedPerm(perm, 1)
 
+    const sources = images ?? []
     const videos: HTMLVideoElement[] = []
+    const pictures: HTMLImageElement[] = []
     let readyTimeout: ReturnType<typeof setTimeout> | null = null
     let raf = 0
     let resizeObserver: ResizeObserver | null = null
@@ -273,7 +280,20 @@ export default function GlyphGridVideo({
       window.dispatchEvent(new Event('glyphgrid:ready'))
     }
 
-    videos.push(
+    if (sources.length) {
+      let pending = sources.length
+      const done = () => {
+        pending -= 1
+        if (pending <= 0) signalReady()
+      }
+      for (const src of sources) {
+        const img = new Image()
+        img.onload = done
+        img.onerror = done
+        img.src = src
+        pictures.push(img)
+      }
+    } else videos.push(
       ...VIDEOS.map((name) => {
         const v = document.createElement('video')
         v.src = `${VIDEO_DIR}/${encodeURIComponent(name)}`
@@ -340,6 +360,8 @@ export default function GlyphGridVideo({
     let lastNow = 0
     let accum = 0
     const videoTimes = videos.map(() => -1)
+    let scrollPx = 0
+    let scrollAt = 0
 
     const mosaic = document.createElement('canvas')
     // Not desynchronized: that flag defers the bitmap, so texImage2D kept
@@ -459,46 +481,8 @@ export default function GlyphGridVideo({
       draw()
     }
 
-    const paintMosaic = (force: boolean) => {
-      if (!gl || !mosaicCtx || !mosaicTex) return
-      let changed = force
-      for (let i = 0; i < videos.length; i++) {
-        const time = videos[i].currentTime
-        if (videos[i].readyState >= 2 && time !== videoTimes[i]) {
-          videoTimes[i] = time
-          changed = true
-        }
-      }
-      if (!changed) return
-
-      const tileW = mosaic.width / videos.length
-      const tileH = mosaic.height
-      mosaicCtx.setTransform(1, 0, 0, 1, 0, 0)
-      mosaicCtx.globalCompositeOperation = 'source-over'
-      mosaicCtx.globalAlpha = 1
-
-      for (let i = 0; i < videos.length; i++) {
-        const dx = i * tileW
-        const v = videos[i]
-        const vw = v.videoWidth
-        const vh = v.videoHeight
-        if (v.readyState < 2 || !vw || !vh) {
-          mosaicCtx.fillStyle = FALLBACK_COLOR
-          mosaicCtx.fillRect(dx, 0, tileW + 1, tileH + 1)
-          continue
-        }
-        const tileAspect = tileW / tileH
-        let sw = vw
-        let sh = vw / tileAspect
-        if (sh > vh) {
-          sh = vh
-          sw = vh * tileAspect
-        }
-        const sx = (vw - sw) * 0.5
-        const sy = (vh - sh) * 0.5
-        mosaicCtx.drawImage(v, sx, sy, sw, sh, dx, 0, tileW + 1, tileH + 1)
-      }
-
+    const uploadMosaic = () => {
+      if (!gl || !mosaicTex) return
       gl.activeTexture(gl.TEXTURE1)
       gl.bindTexture(gl.TEXTURE_2D, mosaicTex)
       gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, false)
@@ -528,6 +512,95 @@ export default function GlyphGridVideo({
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR)
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE)
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE)
+    }
+
+    const drawCover = (
+      img: HTMLImageElement,
+      dx: number,
+      dw: number,
+      dh: number,
+    ) => {
+      if (!mosaicCtx || !img.naturalWidth || !img.naturalHeight) return
+      const iw = img.naturalWidth
+      const ih = img.naturalHeight
+      const scale = Math.max(dw / iw, dh / ih)
+      const sw = dw / scale
+      const sh = dh / scale
+      mosaicCtx.drawImage(
+        img,
+        (iw - sw) * 0.5,
+        (ih - sh) * 0.45,
+        sw,
+        sh,
+        dx,
+        0,
+        dw,
+        dh,
+      )
+    }
+
+    const paintMosaic = (force: boolean) => {
+      if (!gl || !mosaicCtx || !mosaicTex) return
+      if (pictures.length) {
+        const now = performance.now()
+        const dt = scrollAt ? Math.min(0.05, (now - scrollAt) / 1000) : 0
+        scrollAt = now
+        const panelW = mosaic.width
+        const strip = panelW * pictures.length
+        scrollPx = (scrollPx + (panelW / 8) * dt) % strip
+        mosaicCtx.setTransform(1, 0, 0, 1, 0, 0)
+        mosaicCtx.fillStyle = fallbackColor
+        mosaicCtx.fillRect(0, 0, mosaic.width, mosaic.height)
+        for (let i = 0; i < pictures.length; i++) {
+          let x = i * panelW - scrollPx
+          if (x + panelW <= 0) x += strip
+          if (x >= mosaic.width) continue
+          const img = pictures[i]
+          if (!img.complete || !img.naturalWidth) continue
+          drawCover(img, x, panelW + 1, mosaic.height)
+        }
+        uploadMosaic()
+        return
+      }
+      let changed = force
+      for (let i = 0; i < videos.length; i++) {
+        const time = videos[i].currentTime
+        if (videos[i].readyState >= 2 && time !== videoTimes[i]) {
+          videoTimes[i] = time
+          changed = true
+        }
+      }
+      if (!changed) return
+
+      const tileW = mosaic.width / videos.length
+      const tileH = mosaic.height
+      mosaicCtx.setTransform(1, 0, 0, 1, 0, 0)
+      mosaicCtx.globalCompositeOperation = 'source-over'
+      mosaicCtx.globalAlpha = 1
+
+      for (let i = 0; i < videos.length; i++) {
+        const dx = i * tileW
+        const v = videos[i]
+        const vw = v.videoWidth
+        const vh = v.videoHeight
+        if (v.readyState < 2 || !vw || !vh) {
+          mosaicCtx.fillStyle = fallbackColor
+          mosaicCtx.fillRect(dx, 0, tileW + 1, tileH + 1)
+          continue
+        }
+        const tileAspect = tileW / tileH
+        let sw = vw
+        let sh = vw / tileAspect
+        if (sh > vh) {
+          sh = vh
+          sw = vh * tileAspect
+        }
+        const sx = (vw - sw) * 0.5
+        const sy = (vh - sh) * 0.5
+        mosaicCtx.drawImage(v, sx, sy, sw, sh, dx, 0, tileW + 1, tileH + 1)
+      }
+
+      uploadMosaic()
     }
 
     const step = () => {
@@ -800,7 +873,7 @@ export default function GlyphGridVideo({
       if (readyTimeout) clearTimeout(readyTimeout)
       destroy()
     }
-  }, [cellSize])
+  }, [cellSize, images, fallbackColor])
 
   return (
     <>

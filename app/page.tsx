@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Footer from '@/components/Footer'
 import Nav from '@/components/Nav'
 import ProjectEntry, { type Project } from '@/components/ProjectEntry'
+import StackWords from '@/components/StackWords'
 
 
 
@@ -10,7 +11,6 @@ type Intro = {
   titleStart: string
   titleStrong: string
   description: string
-  stack: string
 }
 
 type Section = {
@@ -23,7 +23,6 @@ const INTRO: Intro = {
   titleStrong: 'product engineer.',
   description:
     'Building functionality all the way through, implementing complex infrastructure and minimalist interface with all the tools needed :',
-  stack: 'ts, figma, ai',
 }
 
 const SECTIONS: Section[] = [
@@ -35,11 +34,20 @@ const SECTIONS: Section[] = [
         description:
           'Founder of a design + additive manufacturing startup. End to end shipped product 2023- 2026.',
         href: '/standard-plus',
+        image: '/archives/assets/img/std/cover.webp',
+      },
+      {
+        label: 'Immatis',
+        description:
+          'Reads a foreign car’s registration and gives the French administration’s verdict before you buy. 2026.',
+        href: '/immatis',
+        image: '/video/immatis.mp4',
       },
       {
         label: 'DDB',
         description: 'Multi-brand social creative production. 2020',
         href: '/ddb',
+        image: '/images/ddb/header.webp',
       },
     ],
   },
@@ -50,22 +58,24 @@ const SECTIONS: Section[] = [
         label: 'Server side tracking and metrics',
         description: 'standard + server side metrics system stack 2025',
         href: '/metrics',
-      },      
+      },
       {
         label: 'NFC physical certification',
         description: 'standard + core certification system 2024',
         href: '/nfc',
+        image: '/video/nfc_tag_exemple.mp4',
       },
-
       {
         label: 'Vision +',
         description: 'VR concept exploring attention as currency. 2021.',
         href: '/vision',
+        image: '/video/com.Samy_3.mp4',
       },
       {
         label: 'Fondation Louis Vuitton',
         description: 'Real-time installation, student exibition 2020',
         href: '/flv',
+        image: '/images/flv/out.gif',
       },
 
     ],
@@ -86,7 +96,9 @@ export default function Home() {
 
           <p className="mt-[10px] w-[459px] max-w-full font-normal text-[16px] leading-[normal] tracking-[-0.32px] text-justify text-[#afafaf]">
             {INTRO.description}{' '}
-            <span className="font-semibold text-black"><br></br>{INTRO.stack}</span>
+            <span className="font-semibold text-black">
+              <StackWords />
+            </span>
           </p>
 
           {SECTIONS.map((section, idx) => (

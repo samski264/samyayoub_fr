@@ -1,0 +1,100 @@
+/* Tokens scoped to the showcase so they don't leak into the rest of the book.
+   Values are the Immatis design tokens (globals.css). */
+
+.root {
+  --u: 1px;
+
+  --color-bg-page: #ffffff;
+  --color-surface-glass: #ffffff4d;
+  --color-surface-glass-hover: #ffffff73;
+  --color-surface-card-neutral: #e7e7e7;
+  --color-surface-card-lime: #c8f57a;
+  --color-surface-card-sky: #d9f3ff;
+  --color-text-primary: #000000;
+  --color-text-card-neutral: #505050;
+  --color-text-card-result: #40484b;
+  --color-grey-700: #4a504a;
+  --color-grey-500: #697068;
+  --color-grey-200: #dde2dc;
+  --color-grey-100: #f4f6f2;
+  --color-text-heading-neutral: #3a3a3a;
+  --color-text-heading-lime: #273e00;
+  --color-text-heading-sky: #0e3a4f;
+  --color-link-hover: #757575;
+  --color-focus-ring: var(--color-text-primary);
+  --focus-ring-width: 2px;
+  --focus-ring-offset: 3px;
+
+  --weight-display: 500;
+  --weight-heading: 200;
+  --wght-text: 90;
+  --wght-bold: 116;
+
+  --size-heading: clamp(28px, calc(28px + (100vw - 390px) * 7 / 1338), 35px);
+  --size-body: 14px;
+  --size-caption: 12px;
+
+  --tracking-tight: -0.03em;
+  --tracking-normal: 0;
+
+  --s-7: 7px;
+  --s-10: 10px;
+  --s-14: clamp(12px, calc(12px + (100vw - 390px) * 2 / 1338), 14px);
+  --s-17: clamp(16px, calc(16px + (100vw - 390px) * 1 / 1338), 17px);
+  --s-20: clamp(16px, calc(16px + (100vw - 390px) * 4 / 1338), 20px);
+  --s-23: clamp(16px, calc(16px + (100vw - 390px) * 7 / 1338), 23px);
+  --s-39: clamp(20px, calc(20px + (100vw - 390px) * 19 / 1338), 39px);
+  --s-45: clamp(28px, calc(28px + (100vw - 390px) * 17 / 1338), 45px);
+
+  --radius-card: 17;
+  --radius: calc(var(--radius-card) * var(--u));
+  --frame-radius: 25px;
+  --frame-pad-x: 16px;
+  --frame-pad-y: 28px;
+  padding: var(--frame-pad-y) var(--frame-pad-x);
+  border-radius: var(--frame-radius);
+  --border-upload: 9;
+
+  --blur-glass: 17.6;
+
+  --effect-inner-glass: inset 0 0 calc(18 * var(--u)) calc(16 * var(--u)) rgb(255 255 255 / 25%);
+  --effect-drop-upload: 0 0 calc(99.8 * var(--u)) calc(65 * var(--u)) rgb(255 255 255 / 25%);
+
+  color: var(--color-text-primary);
+  font-family: var(--font-parabole), system-ui, sans-serif;
+  font-weight: var(--wght-text);
+}
+
+.depot {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 48px 16px 32px;
+  /* Même centre que le cadre : le rayon du canvas recule de l'écart. */
+  border-radius: max(0px, calc(var(--frame-radius) - var(--frame-pad-x) - 0.5px)) /
+    max(0px, calc(var(--frame-radius) - var(--frame-pad-y) - 0.5px));
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.canvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.pieces {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .root {
+    --frame-pad-x: 36px;
+    --frame-pad-y: 40px;
+  }
+}
